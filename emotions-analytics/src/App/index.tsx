@@ -1,15 +1,40 @@
 import React from "react";
 import Routes from "./Routes";
-import { Link } from "react-router-dom";
+import SidebarMenu from "../Components/SidebarMenu";
 
-export default class App extends React.Component {
+interface Props {
+}
+
+export default class App extends React.Component<Props> {
+
+  getDataMenu() {
+    return [
+      {
+        title: 'Home',
+        iconName: 'chemical',
+        routePath: '/',
+      },
+      {
+        title: 'Testes',
+        iconName: 'chemical',
+        routePath: '/Testes',
+      },
+      {
+        title: 'Pessoas',
+        iconName: 'chemical',
+        routePath: '/pessoas',
+      }
+    ]
+  }
+
+
   render() {
+
+    const dataMenu = this.getDataMenu();
+
     return (
       <div>
-
-        <h1>Scena principal</h1>
-        
-        
+        <SidebarMenu data={dataMenu} />
         <Routes />
       </div>
     )
