@@ -6,15 +6,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <div>Scena principal</div>
 
-        {/* Component it with SideBar Pure.Component */}
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/pessoas">Persons</Link></li>
-        </ul>
-        {/* Component it with SideBar Pure.Component */}
-
+        <h1>Scena principal</h1>
+        
+        
         <Routes />
       </div>
     )
