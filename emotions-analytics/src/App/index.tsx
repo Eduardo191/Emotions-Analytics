@@ -10,18 +10,18 @@ export default class App extends React.Component<Props> {
   getDataMenu() {
     return [
       {
-        title: 'Home',
-        iconName: 'chemical',
+        title: 'home',
+        iconName: 'home',
         routePath: '/',
       },
       {
-        title: 'Testes',
+        title: 'testes',
         iconName: 'chemical',
-        routePath: '/Testes',
+        routePath: '/testes',
       },
       {
-        title: 'Pessoas',
-        iconName: 'chemical',
+        title: 'pessoas',
+        iconName: 'peoples',
         routePath: '/pessoas',
       }
     ]
@@ -33,7 +33,7 @@ export default class App extends React.Component<Props> {
     const dataMenu = this.getDataMenu();
 
     return (
-      <div>
+      <div className="container">
         <SidebarMenu data={dataMenu} />
         <Routes />
       </div>

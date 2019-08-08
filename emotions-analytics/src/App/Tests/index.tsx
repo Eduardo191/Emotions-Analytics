@@ -3,7 +3,7 @@ import React from "react";
 export default class Tests extends React.Component {
   render() {
     return (
-      <h2>Tests</h2>
+      <h2></h2>
     )
   }
 }

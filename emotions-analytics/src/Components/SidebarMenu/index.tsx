@@ -15,6 +15,7 @@ interface Props {
 
 interface State {
   compressed: boolean;
+  menuIcon: string;
 }
 
 class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State>{
@@ -23,6 +24,7 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
     super(props);
     this.state = {
       compressed: false,
+      menuIcon: "arrow",
     };
   }
 
@@ -54,7 +56,7 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
             <Icon name={iconName} size="100%" color="white" />
           </div>
 
-          <span>{title}</span>
+          <h3>{title}</h3>
 
         </Link>
 
@@ -79,12 +81,14 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
 
             {this.renderList()}
 
-            <li
+            <div
               className="menu"
               onClick={() => this.changeCompressed(!this.state.compressed)}
             >
-              <Icon name="chemical" color="white"/>
-            </li>
+              <div className="icon">
+                <Icon name={this.state.menuIcon} color="white" size="100%" />
+              </div>
+            </div>
 
           </ul>
         </nav>
