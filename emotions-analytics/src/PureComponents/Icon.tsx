@@ -39,6 +39,17 @@ export default class Icon extends React.PureComponent<Props, State> {
   }
 
 
+  componentDidUpdate = (prevProps: Props) => {
+    if (prevProps != this.props) {
+      let { color, name, size } = this.props;
+      color = color ? color : "#4C006A";
+      size = size ? size : 12;
+
+      this.setState({ color, name, size });
+    }
+  }
+
+
   render() {
     return (
       <IcomoonReact
