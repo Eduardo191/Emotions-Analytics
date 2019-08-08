@@ -65,23 +65,28 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
   }
 
 
-  changeCompressed(bool: boolean) {
-    this.setState({ compressed: bool })
+  changeCompressed(compressed: boolean) {
+    
+    const menuIcon = compressed ? "sidebar" : "arrow";
+
+    this.setState({ 
+      compressed, 
+      menuIcon
+    });
   }
 
 
   render() {
 
-    const compressed = this.state.compressed ? "compressed" : "";
+    const compressed = this.state.compressed ? "compressed" : "uncompressed";
 
     return (
       <aside className={`${compressed} sidebar_menu`}>
         <nav>
           <ul>
-
             {this.renderList()}
-
-            <div
+          </ul>
+          <div
               className="menu"
               onClick={() => this.changeCompressed(!this.state.compressed)}
             >
@@ -89,8 +94,6 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
                 <Icon name={this.state.menuIcon} color="white" size="100%" />
               </div>
             </div>
-
-          </ul>
         </nav>
       </aside>
     )
