@@ -14,6 +14,7 @@ interface Props {
 }
 
 interface State {
+  compressedClass: string;
   compressed: boolean;
   menuIcon: string;
 }
@@ -23,8 +24,9 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
   constructor(props: RouteComponentProps<{}> & Props) {
     super(props);
     this.state = {
-      compressed: false,
-      menuIcon: "arrow",
+      compressedClass: "compressed",
+      compressed: true,
+      menuIcon: "sidebar",
     };
   }
 
@@ -66,34 +68,71 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
 
 
   changeCompressed(compressed: boolean) {
-    
-    const menuIcon = compressed ? "sidebar" : "arrow";
 
-    this.setState({ 
-      compressed, 
-      menuIcon
-    });
+    if (compressed) {
+      this.compress();
+    } else {
+      this.uncompress();
+    }
+  }
+
+
+  compress() {
+
+    this.setState({ compressedClass: "uncompressed outside" });
+
+    setTimeout(() => {
+
+      this.setState({
+        compressedClass: "compressed invisible",
+        menuIcon: "sidebar",
+      });
+
+      setTimeout(() => {
+        this.setState({
+          compressedClass: "compressed",
+          compressed: true,
+        })
+      }, 100);
+    }, 300);
+  }
+
+  async uncompress() {
+
+    this.setState({ compressedClass: "compressed invisible" });
+
+    setTimeout(() => {
+
+      this.setState({
+        compressedClass: "uncompressed outside",
+        menuIcon: "arrow",
+      });
+
+      setTimeout(() => {
+        this.setState({
+          compressedClass: "uncompressed",
+          compressed: false,
+        })
+      }, 100);
+    }, 300);
   }
 
 
   render() {
-
-    const compressed = this.state.compressed ? "compressed" : "uncompressed";
-
     return (
-      <aside className={`${compressed} sidebar_menu`}>
+      <aside className={`${this.state.compressedClass} sidebar_menu`}>
         <nav>
           <ul>
             {this.renderList()}
           </ul>
           <div
-              className="menu"
-              onClick={() => this.changeCompressed(!this.state.compressed)}
-            >
-              <div className="icon">
-                <Icon name={this.state.menuIcon} color="white" size="100%" />
-              </div>
+            className="menu"
+            onClick={() => this.changeCompressed(!this.state.compressed)}
+          >
+            <div className="icon">
+              <Icon name={this.state.menuIcon} color="white" size="100%" />
             </div>
+          </div>
         </nav>
       </aside>
     )

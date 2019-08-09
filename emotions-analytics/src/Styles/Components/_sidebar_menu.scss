@@ -5,7 +5,19 @@ aside.sidebar_menu {
     background-color: $purple;
     
     li {
-      a { display: flex }
+      a { 
+        display: flex;
+        .icon { opacity: 0.75 }
+      }
+    }
+
+    li.is_active {
+      a {
+        .icon { 
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }      
     }
   }
 
@@ -78,6 +90,13 @@ aside.sidebar_menu.uncompressed{
       margin-left: -7.5px;
     }
   }
+
+  transition: left 0.3s, opacity 0.3s;
+}
+
+aside.sidebar_menu.uncompressed.outside {
+  left: -80px;
+  opacity: 0;
 }
 
 aside.sidebar_menu.compressed{
@@ -94,9 +113,7 @@ aside.sidebar_menu.compressed{
       a {
         justify-content: center;
 
-        .icon {
-          width: 17px;
-        }
+        .icon { width: 17px }
 
         h3 { display: none }
 
@@ -108,12 +125,17 @@ aside.sidebar_menu.compressed{
   }
 
   .menu{
-    padding: 5px 0;
-    margin-top: 5px;
-    margin-left: 5px;
+    margin: 5px 0 0 5px; 
+    height: 30px;
+    width: 30px;
     border-radius: 50px;
     
     .icon{ width: 14px }
   }
+
+  transition: opacity 0.3s;
 }
 
+aside.sidebar_menu.compressed.invisible{
+  opacity: 0;
+}
