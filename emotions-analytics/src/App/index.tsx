@@ -1,6 +1,6 @@
 import React from "react";
 import Routes from "./Routes";
-import SidebarMenu from "../Components/SidebarMenu";
+import SidebarMenu from "./Components/SidebarMenu";
 
 interface Props {
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { RouteComponentProps } from "react-router-dom";
-import Icon from "../../PureComponents/Icon";
+import Icon from "../../../Components/Icon";
 
 interface OptionMenu {
   title: string;
