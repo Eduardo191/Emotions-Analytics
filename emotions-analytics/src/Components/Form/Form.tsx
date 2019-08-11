@@ -5,8 +5,9 @@ import { FieldInterface } from "./Interfaces";
 
 export interface Props {
   onSubmit: Function;
-  fields: Array<FieldInterface>;
+  form: Array<FieldInterface>;
   onCancel?: Function;
+  submitName?: string;
 }
 
 interface State {
@@ -29,7 +30,7 @@ export default class Form extends React.Component<Props, State> {
 
 
   componentDidUpdate = (prevProps: Props) => {
-    if (prevProps.fields !== this.props.fields) {
+    if (prevProps.form !== this.props.form) {
       this.setValues();
     }
   }
@@ -37,10 +38,10 @@ export default class Form extends React.Component<Props, State> {
 
   setValues() {
 
-    const fields = this.props.fields;
+    const form = this.props.form;
     let values: any = {};
 
-    _.map(fields, (field) => {
+    _.map(form, (field) => {
       values[field.fieldTags.name] = field.value ? field.value : "";
     });
 
@@ -68,9 +69,9 @@ export default class Form extends React.Component<Props, State> {
   }
 
 
-  renderFields() {
+  renderform() {
     return (
-      this.props.fields.map((field: FieldInterface) => {
+      this.props.form.map((field: FieldInterface) => {
 
         const values: any = this.state.values;
         const value = values[field.fieldTags.name];
@@ -89,10 +90,13 @@ export default class Form extends React.Component<Props, State> {
 
 
   render() {
+
+    const submitName = this.props.submitName ? this.props.submitName : "Cadastrar";
+
     return (
       <form className="form" onSubmit={(event) => this.onSubmit(event)}>
 
-        {this.renderFields()}
+        {this.renderform()}
       
         <div className="wrapper_buttons">
           <div className="magic_wrapper">
@@ -107,7 +111,7 @@ export default class Form extends React.Component<Props, State> {
               </div>
             : null}
 
-            <input className="button" type="submit" value="Enviar" />
+            <input className="button" type="submit" value={submitName} />
           </div>
         </div>
       </form>

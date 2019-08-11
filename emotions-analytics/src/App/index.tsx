@@ -1,40 +1,23 @@
 import React from "react";
 import Routes from "./Routes";
-import SidebarMenu from "./Components/SidebarMenu";
+import SidebarMenu from "../Components/SidebarMenu";
+import { FormTypeTest, FormNewTest, FormPerson } from "../Services/Get/Forms";
+import { DataMenu } from "../Services/Get/Menu";
 
 interface Props {
 }
 
 export default class App extends React.Component<Props> {
 
-  getDataMenu() {
-    return [
-      {
-        title: 'home',
-        iconName: 'home',
-        routePath: '/',
-      },
-      {
-        title: 'testes',
-        iconName: 'chemical',
-        routePath: '/testes',
-      },
-      {
-        title: 'pessoas',
-        iconName: 'peoples',
-        routePath: '/pessoas',
-      }
-    ]
-  }
-
+  // onSubmit(values: Object) {
+  //   console.log("onSubmit values ", values);
+  // }
+  // <ModalForm form={FormPerson} onSubmit={(event: any) => this.onSubmit(event)} />
 
   render() {
-
-    const dataMenu = this.getDataMenu();
-
     return (
       <div className="container">
-        <SidebarMenu data={dataMenu} />
+        <SidebarMenu data={DataMenu} />
         <Routes />
       </div>
     )

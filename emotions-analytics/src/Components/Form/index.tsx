@@ -48,7 +48,7 @@ export class ModalForm extends React.Component<PropsModalForm & Props, StateModa
       <div className={`modal_form ${this.state.mode}`}>
         <div className="wrapper">
           <Form {...this.props} onCancel={() => this.onCancel()} />
-          <img className="loading" src={loading}/>
+          <img className="loading" src={loading} alt="loding"/>
         </div>
       </div>
     )

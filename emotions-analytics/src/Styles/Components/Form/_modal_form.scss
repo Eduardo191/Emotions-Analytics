@@ -25,10 +25,14 @@
           background-color: $purple!important;           
         }
 
-        input, select {
+        input, select, textarea {
           border-color: $white;
           color: $white;
         }
+
+        textarea { border-color: rgba($color: $white, $alpha: 0.5) }
+
+        ::placeholder { color: rgba($color: $white, $alpha: 0.5) }
 
         transition: filter 0.7s;  
       }
