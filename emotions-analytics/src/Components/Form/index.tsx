@@ -1,17 +1,56 @@
 import React from "react";
 import Form, { Props } from "./Form";
+import loading from "../../Assets/loading.svg";
 
-export function ModalForm(props: Props) {
+interface PropsModalForm {
+  mode?: "open" | "close" | "loading";
+}
 
-  const cancel = () => {
-    console.log("cancel");
+interface StateModalProps {
+  mode: "open" | "close" | "loading";
+}
+
+export class ModalForm extends React.Component<PropsModalForm & Props, StateModalProps> {
+
+  constructor(props: PropsModalForm & Props) {
+    super(props);
+    this.state = {
+      mode: "open",
+    };
   }
 
-  return (
-    <div className="modal_form">
-      <div className="wrapper">
-        <Form {...props} onCancel={() => cancel()} />
+
+  componentDidMount = () => {
+    this.setModeByProps();
+  }
+
+
+  componentDidUpdate = (prevProps: PropsModalForm & Props) => {
+    if (prevProps.mode !== this.props.mode) {
+      this.setModeByProps();
+    }
+  }
+
+
+  setModeByProps() {
+    const mode = this.props.mode ? this.props.mode : "open";
+    this.setState({ mode });
+  }
+
+
+  onCancel() {
+    this.setState({ mode: "close" });
+  }
+
+
+  render() {
+    return (
+      <div className={`modal_form ${this.state.mode}`}>
+        <div className="wrapper">
+          <Form {...this.props} onCancel={() => this.onCancel()} />
+          <img className="loading" src={loading}/>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
