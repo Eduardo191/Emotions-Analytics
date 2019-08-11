@@ -6,13 +6,14 @@ import { FieldInterface } from "./Interfaces";
 export interface Props {
   onSubmit: Function;
   fields: Array<FieldInterface>;
+  onCancel?: Function;
 }
 
 interface State {
   values: Object;
 }
 
-export default class Form extends React.PureComponent<Props, State> {
+export default class Form extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
@@ -40,7 +41,7 @@ export default class Form extends React.PureComponent<Props, State> {
     let values: any = {};
 
     _.map(fields, (field) => {
-      values[field.fieldTags.name] = field.fieldTags.value ? field.fieldTags.value : "";
+      values[field.fieldTags.name] = field.value ? field.value : "";
     });
 
     this.setState({ values });
@@ -68,14 +69,16 @@ export default class Form extends React.PureComponent<Props, State> {
 
 
   renderFields() {
-
-    const fields = this.props.fields;
-
     return (
-      fields.map((field: FieldInterface) => {
+      this.props.fields.map((field: FieldInterface) => {
+
+        const values: any = this.state.values;
+        const value = values[field.fieldTags.name];
+        
         return (
           <Field
             {...field}
+            currentValue={value}
             onChange={(event: any) => this.onChange(event)}
             key={`${field.fieldTags.name}`}
           />
@@ -88,8 +91,25 @@ export default class Form extends React.PureComponent<Props, State> {
   render() {
     return (
       <form className="form" onSubmit={(event) => this.onSubmit(event)}>
+
         {this.renderFields()}
-        <input type="submit" value="Enviar" />
+      
+        <div className="wrapper_buttons">
+          <div className="magic_wrapper">
+
+            {this.props.onCancel ?
+              <div
+                className="button"
+                //@ts-ignore 
+                onClick={() => { this.props.onCancel() }}
+              >
+                Cancelar
+              </div>
+            : null}
+
+            <input className="button" type="submit" value="Enviar" />
+          </div>
+        </div>
       </form>
     )
   }

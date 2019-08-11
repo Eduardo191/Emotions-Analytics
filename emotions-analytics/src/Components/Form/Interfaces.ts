@@ -3,10 +3,10 @@ export interface FieldInterface {
     name: string;
     required: boolean;
     type?: string;  
-    value?: string;
     placeholder?: string;
     className?: string;
   };
+  value?: string;
   label?: string;
   additionalTag?: Object;
   options?: Array<string>; 

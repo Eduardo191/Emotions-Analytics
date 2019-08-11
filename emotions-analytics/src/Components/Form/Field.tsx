@@ -3,13 +3,12 @@ import { FieldInterface } from "./Interfaces";
 
 interface Props {
   onChange: Function;
+  currentValue: string;
 }
 
-interface State {
-}
+export default class Field extends React.PureComponent<Props & FieldInterface> {
 
-export default class Field extends React.PureComponent<Props & FieldInterface, State> {
-
+  
   renderOptions() {
 
     const options = this.props.options;
@@ -36,6 +35,7 @@ export default class Field extends React.PureComponent<Props & FieldInterface, S
           <select
             {...this.props.fieldTags}
             {...this.props.additionalTag}
+            value={this.props.currentValue}
             onChange={(event) => this.props.onChange(event)}
           >
             {this.renderOptions()}
@@ -46,6 +46,7 @@ export default class Field extends React.PureComponent<Props & FieldInterface, S
           <input
             {...this.props.fieldTags}
             {...this.props.additionalTag}
+            value={this.props.currentValue}
             onChange={(event) => this.props.onChange(event)}
           />
         }

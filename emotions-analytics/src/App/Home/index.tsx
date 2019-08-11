@@ -1,5 +1,5 @@
 import React from "react";
-import {ExpandForm} from "../../Components/Form";
+import { ModalForm } from "../../Components/Form";
 import { FieldInterface } from "../../Components/Form/Interfaces";
 
 export default class Home extends React.Component {
@@ -14,6 +14,7 @@ export default class Home extends React.Component {
     const fields: Array<FieldInterface> = [
       {
         label: "field1",
+        value: "Valor legal",
         fieldTags: {
           required: false,
           name: "field1",
@@ -38,10 +39,10 @@ export default class Home extends React.Component {
       },
       {
         label: "select",
+        value: "Argentina",
         fieldTags: {
           required: true,
           name: "select",
-          value: "Argentina",
         },
         options: [
           "Brasil",
@@ -52,7 +53,7 @@ export default class Home extends React.Component {
     ]
 
     return (
-      <ExpandForm fields={fields} onSubmit={(event: any) => this.onSubmit(event)} />
+      <ModalForm fields={fields} onSubmit={(event: any) => this.onSubmit(event)} />
     )
   }
 }
