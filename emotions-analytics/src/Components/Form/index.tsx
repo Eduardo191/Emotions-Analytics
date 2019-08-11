@@ -15,7 +15,7 @@ export class ModalForm extends React.Component<PropsModalForm & Props, StateModa
   constructor(props: PropsModalForm & Props) {
     super(props);
     this.state = {
-      mode: "open",
+      mode: "close",
     };
   }
 
@@ -33,12 +33,15 @@ export class ModalForm extends React.Component<PropsModalForm & Props, StateModa
 
 
   setModeByProps() {
-    const mode = this.props.mode ? this.props.mode : "open";
+    const mode = this.props.mode ? this.props.mode : "close";
     this.setState({ mode });
   }
 
 
   onCancel() {
+    if (this.props.onCancel !== undefined) {
+      this.props.onCancel();
+    }
     this.setState({ mode: "close" });
   }
 

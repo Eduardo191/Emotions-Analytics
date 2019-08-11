@@ -1,5 +1,6 @@
 aside.sidebar_menu {
   position: fixed;
+  z-index: 1;
   
   ul { 
     background-color: $purple;
