@@ -45,8 +45,6 @@ export default class Form extends React.Component<Props, State> {
     const receivedValues = this.props.values ? this.props.values : [];
     let values: any = {};
 
-    console.log("receivedValues: ", this.props.values);
-
     _.map(receivedValues, (value) => {
       values[value.fieldName] = value.value ? value.value : "";
     });
