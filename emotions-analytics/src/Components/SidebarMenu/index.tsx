@@ -2,6 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { RouteComponentProps } from "react-router-dom";
 import Icon from "../Icon";
+import { delay } from "../../Services/Library/delay";
 
 interface OptionMenu {
   title: string;
@@ -77,44 +78,42 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
   }
 
 
-  compress() {
+  async compress() {
 
     this.setState({ compressedClass: "uncompressed outside" });
 
-    setTimeout(() => {
+    await delay(300);
 
-      this.setState({
-        compressedClass: "compressed invisible",
-        menuIcon: "sidebar",
-      });
+    this.setState({
+      compressedClass: "compressed invisible",
+      menuIcon: "sidebar",
+    });
 
-      setTimeout(() => {
-        this.setState({
-          compressedClass: "compressed",
-          compressed: true,
-        })
-      }, 100);
-    }, 300);
+    await delay(100);
+    
+    this.setState({
+      compressedClass: "compressed",
+      compressed: true,
+    })
   }
 
   async uncompress() {
 
     this.setState({ compressedClass: "compressed invisible" });
 
-    setTimeout(() => {
+    await delay(300);
 
-      this.setState({
-        compressedClass: "uncompressed outside",
-        menuIcon: "arrow",
-      });
+    this.setState({
+      compressedClass: "uncompressed outside",
+      menuIcon: "arrow",
+    });
 
-      setTimeout(() => {
-        this.setState({
-          compressedClass: "uncompressed",
-          compressed: false,
-        })
-      }, 100);
-    }, 300);
+    await delay(100);
+    
+    this.setState({
+      compressedClass: "uncompressed",
+      compressed: false,
+    })
   }
 
 
