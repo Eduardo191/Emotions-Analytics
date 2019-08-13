@@ -7,7 +7,11 @@ export interface Props {
   onSubmit: Function;
   form: Array<FieldInterface>;
   onCancel?: Function;
-  submitName?: string;
+  submitLabel?: string;
+  values?: Array<{
+    fieldName: string;
+    value: any;
+  }>;
 }
 
 interface State {
@@ -37,13 +41,16 @@ export default class Form extends React.Component<Props, State> {
 
 
   setValues() {
-
-    const form = this.props.form;
+    
+    const receivedValues = this.props.values ? this.props.values : [];
     let values: any = {};
 
-    _.map(form, (field) => {
-      values[field.fieldTags.name] = field.value ? field.value : "";
+    console.log("receivedValues: ", this.props.values);
+
+    _.map(receivedValues, (value) => {
+      values[value.fieldName] = value.value ? value.value : "";
     });
+
 
     this.setState({ values });
   }
@@ -91,7 +98,7 @@ export default class Form extends React.Component<Props, State> {
 
   render() {
 
-    const submitName = this.props.submitName ? this.props.submitName : "Cadastrar";
+    const submitLabel = this.props.submitLabel ? this.props.submitLabel : "Cadastrar";
 
     return (
       <form className="form" onSubmit={(event) => this.onSubmit(event)}>
@@ -111,7 +118,7 @@ export default class Form extends React.Component<Props, State> {
               </div>
             : null}
 
-            <input className="button" type="submit" value={submitName} />
+            <input className="button" type="submit" value={submitLabel} />
           </div>
         </div>
       </form>

@@ -19,7 +19,7 @@ interface Props {
 interface State {
   formMode: "open" | "close" | "loading";
   currentForm: Array<FieldInterface>;
-  formSubmitName: string;
+  formsubmitLabel: string;
   sidebarMode: boolean;
 }
 
@@ -30,7 +30,7 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
     this.state = {
       formMode: "close",
       currentForm: [],
-      formSubmitName: "",
+      formsubmitLabel: "",
       sidebarMode: false,
     };
   }
@@ -51,7 +51,7 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
 
   renderItem(title: string, iconName: string | false, index: number | "startTest") {
     return (
-      <li onClick={() => this.openModal(index)}>
+      <li key={`${index}`} onClick={() => this.openModal(index)}>
         {iconName ?
           <div className="option_icon">
             <Icon name={iconName} color="#ffffff" size="%100" />
@@ -68,20 +68,20 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
     const data = this.props.data;
 
     let currentForm: Array<FieldInterface>;
-    let formSubmitName: string;
+    let formsubmitLabel: string;
 
     if (index === "startTest") {
       currentForm = FormNewTest;
-      formSubmitName = "Iniciar";
+      formsubmitLabel = "Iniciar";
     } else {
       currentForm = data[index].form;
-      formSubmitName = "Cadastrar";
+      formsubmitLabel = "Cadastrar";
     }
 
     this.setState({
       formMode: "open",
       currentForm,
-      formSubmitName,
+      formsubmitLabel,
     })
   }
 
@@ -122,7 +122,7 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
           onSubmit={(values: Object) => this.onSubmit(values)}
           onCancel={() => this.onCancel()}
           form={this.state.currentForm}
-          submitName={this.state.formSubmitName}
+          submitLabel={this.state.formsubmitLabel}
         />
       </aside>
     )

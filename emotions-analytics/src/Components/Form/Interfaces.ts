@@ -6,7 +6,6 @@ export interface FieldInterface {
     placeholder?: string;
     className?: string;
   };
-  value?: string;
   label?: string;
   additionalTag?: Object;
   options?: Array<string>; 
