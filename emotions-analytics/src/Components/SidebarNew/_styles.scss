@@ -31,46 +31,29 @@ aside.sidebar_new {
       display: flex;
       align-items: center;
       justify-content: space-around;  
-      padding: 15px;
-      border-top: 0.5px solid rgba($color: $white, $alpha: 0.5);
+      padding: 10px 15px;
+      border-radius: 50px;
+      background-color: $purple;
+      margin-bottom: 5px;
       cursor: pointer;
 
       .option_icon {
         width: 15px;
-        transition: transform 0.3s;
       }
 
       span {
         color: $white;
         margin-left: 10px;
-        transition: transform 0.3s;
       }
+      
+      transition: transform 0.3s;
     }
-
-    li:first-child { border: unset }
 
     li:hover {
-      .option_icon { transform: scale(1.1) }      
-      span { transform: scale(1.1) }      
+      transform: scale(1.05);      
     }
-    
+
     transition: transform 0.4s, opacity 0.4s;    
-  }
-
-  ul.options, ul.start_test {
-    background-color: $purple;
-    border-radius: 20px;
-  }
-
-  ul.start_test {
-    margin-top: 5px;
-
-    li {
-      justify-content: center;
-      padding: 10px 5px;
-
-      span { margin-left: unset }
-    }
   }
 }
 
@@ -81,7 +64,7 @@ aside.sidebar_new.close {
   }
 
   ul {
-    transform: translateY(-70px);
+    transform: translateY(-15px);
     opacity: 0;
     pointer-events: none;
   }

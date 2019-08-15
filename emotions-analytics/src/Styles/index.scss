@@ -5,9 +5,9 @@
 @import 'Structure/reset';
 
 /*Components*/
-@import 'Components/start_test_fixed';
-@import 'Components/sidebar_menu';
-@import 'Components/sidebar_new';
-@import 'Components/Form/form';
+@import '../Components/StartTestFixed/styles';
+@import '../Components/SidebarMenu/styles';
+@import '../Components/SidebarNew/styles';
+@import '../Components/Form/Styles/form';
   //form types
-  @import 'Components/Form/modal_form';
+  @import '../Components/Form/Styles/modal_form';

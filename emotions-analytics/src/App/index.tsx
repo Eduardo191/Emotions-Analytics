@@ -4,7 +4,7 @@ import SidebarMenu from "../Components/SidebarMenu";
 import SidebarNew from "../Components/SidebarNew";
 import { DataMenu } from "../Services/Get/Menu";
 import { DataSidebarNew } from "../Services/Get/New";
-import { StartTestFixed } from "../Components/StartTestFixed";
+import StartTestFixed from "../Components/StartTestFixed";
 
 interface Props {
 }

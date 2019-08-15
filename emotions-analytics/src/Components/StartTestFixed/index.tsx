@@ -1,8 +1,8 @@
 import React from "react";
-import { FormNewTest } from "../Services/Get/Forms"
-import Icon from "./Icon";
-import { delay } from "../Services/Library/delay";
-import { ModalForm } from "./Form/Components/FormTypes/ModalForm";
+import { FormNewTest } from "../../Services/Get/Forms"
+import Icon from "../Icon";
+import { delay } from "../../Services/Library/delay";
+import { ModalForm } from "../Form/Components/FormTypes/ModalForm";
 
 interface State {
   formMode: "open" | "close" | "loading";
@@ -10,7 +10,7 @@ interface State {
 
 interface Props { }
 
-export class StartTestFixed extends React.Component<Props, State>{
+export default class StartTestFixed extends React.Component<Props, State>{
 
   constructor(props: Props) {
     super(props);
