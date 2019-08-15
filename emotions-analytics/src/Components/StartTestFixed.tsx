@@ -60,7 +60,7 @@ export class StartTestFixed extends React.Component<Props, State>{
           onSubmit={(values: Object) => this.onSubmit(values)}
           onCancel={() => this.onCancel()}
           form={FormNewTest}
-          submitLabel="Cadastrar"
+          submitLabel="Iniciar"
         />
       </div>
     )
