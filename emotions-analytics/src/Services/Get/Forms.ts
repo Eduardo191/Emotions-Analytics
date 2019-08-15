@@ -2,87 +2,66 @@ import { FieldInterface } from "../../Components/Form/Interfaces";
 
 export const FormTypeTest: Array<FieldInterface> = [
   {
-    label: "Titulo",
-    fieldTags: {
-      name: "titulo",
-      required: true,
-      placeholder: "Titulo do teste",
-      type: "text",
-    }
+    typeId: 1, //Texto simples
+    key: "test_type_title",
+    name: "Titulo",
+    placeholder: "Titulo do teste",
+    required: true,
   },
   {
-    label: "URL",
-    fieldTags: {
-      name: "url",
-      required: true,
-      placeholder: "Link da pagina inicial do teste",
-      type: "text",
-    }
+    typeId: 1, //Texto simples
+    key: "test_type_url",
+    name: "URL",
+    placeholder: "Link da pagina inicial do teste",
+    required: true,
   },
   {
-    label: "Objetivo",
-    fieldTags: {
-      name: "objetivo",
-      required: true,
-      placeholder: "Objetivo do participante",
-      type: "text",
-    },
-    additionalTag: {
-      rows: 5,
-    }
+    typeId: 2, //Texto multilinha
+    key: "test_type_objective",
+    name: "Objetivo",
+    placeholder: "Objetivo do teste",
+    required: true,
   }
 ]
 
 
 export const FormNewTest: Array<FieldInterface> = [
   {
-    label: "Tipo do teste",
-    fieldTags: {
-      name: "tipo",
-      required: true,
-    },
-    options: [
-      //Pegar assincrono
-    ]
+    typeId: 4, //Opções
+    key: "test_options",
+    name: "Tipo do teste",
+    required: true,
+    getOptions: async () => await console.log("Get options here"),
   },
   {
-    label: "Sujeito",
-    fieldTags: {
-      name: "pessoa",
-      required: true,
-    },
-    options: [
-      //Pegar assincrono
-    ]
+    typeId: 4, //Opções
+    key: "test_person",
+    name: "Sujeito",
+    required: true,
+    getOptions: async () => await console.log("Get options here"),
   },
 ]
 
 
 export const FormPerson: Array<FieldInterface> = [
   {
-    label: "Nome",
-    fieldTags: {
-      name: "nome",
-      required: true,
-      placeholder: "Nome do participante",
-      type: "text",
-    }
+    typeId: 1, //Texto simples
+    key: "person_name",
+    name: "Nome",
+    placeholder: "Nome do participante",
+    required: true,
   },
   {
-    label: "Email",
-    fieldTags: {
-      name: "email",
-      required: true,
-      placeholder: "Email do participante",
-      type: "text",
-    }
+    typeId: 1, //Texto simples
+    key: "person_email",
+    name: "Email",
+    placeholder: "Email do participante",
+    required: true,
   },
   {
-    label: "Consentimento",
-    fieldTags: {
-      name: "consentimento",
-      required: false,
-      type: "file",
-    },
+    typeId: 3, //Anexo
+    key: "person_consent",
+    name: "Consentimento",
+    required: false,
   }
 ]

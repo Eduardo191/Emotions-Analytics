@@ -1,6 +1,6 @@
 import { delay } from "../Library/delay";
 
-export async function PostTestType(testTypeValues: Array<{ fieldName: string, value: any }>) {
+export async function PostTestType(testTypeValues: Array<{ key: string, value: any }>) {
   await delay(3000);
   return true;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import Field from "./Field";
-import { FieldInterface } from "./Interfaces";
+import { FieldInterface } from "../Interfaces";
 
 export interface Props {
   onSubmit: Function;
@@ -9,7 +9,7 @@ export interface Props {
   onCancel?: Function;
   submitLabel?: string;
   values?: Array<{
-    fieldName: string;
+    key: string;
     value: any;
   }>;
 }
@@ -46,7 +46,7 @@ export default class Form extends React.Component<Props, State> {
     let values: any = {};
 
     _.map(receivedValues, (value) => {
-      values[value.fieldName] = value.value ? value.value : "";
+      values[value.key] = value.value ? value.value : "";
     });
 
 
@@ -79,14 +79,13 @@ export default class Form extends React.Component<Props, State> {
       this.props.form.map((field: FieldInterface) => {
 
         const values: any = this.state.values;
-        const value = values[field.fieldTags.name];
+        const value = values[field.key];
         
         return (
           <Field
             {...field}
-            currentValue={value}
+            value={value}
             onChange={(event: any) => this.onChange(event)}
-            key={`${field.fieldTags.name}`}
           />
         )
       })

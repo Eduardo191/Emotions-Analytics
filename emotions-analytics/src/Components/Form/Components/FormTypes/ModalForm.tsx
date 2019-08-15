@@ -1,6 +1,6 @@
 import React from "react";
 import Form, { Props } from "../Form";
-import loading from "../../../Assets/loading.svg";
+import loading from "../../../../Assets/loading.svg";
 
 interface PropsModalForm {
   mode?: "open" | "close" | "loading";
