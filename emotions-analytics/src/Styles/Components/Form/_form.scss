@@ -25,7 +25,7 @@ form.form {
       padding: 2px 5px;
     }
 
-    input:hover, input:focus, select:hover, select:focus, textarea:hover, textarea:focus {
+    input:focus, select:focus, textarea:focus {
       transform: scale(1.03);
     }
   }
