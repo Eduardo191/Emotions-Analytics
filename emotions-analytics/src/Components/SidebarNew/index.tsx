@@ -2,7 +2,6 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { FieldInterface } from "../../Components/Form/Interfaces";
 import { RouteComponentProps } from "react-router-dom";
-import { FormNewTest } from "../../Services/Get/Forms";
 import { ModalForm } from "../Form";
 import Icon from "../Icon";
 
@@ -19,9 +18,8 @@ interface Props {
 
 interface State {
   formMode: "open" | "close" | "loading";
-  formsubmitLabel: string;
   sidebarMode: boolean;
-  currentIndex: number | "startTest";
+  currentIndex: number;
 }
 
 class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>{
@@ -30,9 +28,8 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
     super(props);
     this.state = {
       formMode: "close",
-      formsubmitLabel: "",
       sidebarMode: false,
-      currentIndex: "startTest",
+      currentIndex: 0,
     };
   }
 
@@ -50,7 +47,7 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
   }
 
 
-  renderItem(title: string, iconName: string | false, index: number | "startTest") {
+  renderItem(title: string, iconName: string | false, index: number) {
     return (
       <li key={`${index}`} onClick={() => this.openModal(index)}>
         {iconName ?
@@ -64,15 +61,13 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
   }
 
 
-  openModal(index: number | "startTest") {
+  openModal(index: number) {
 
     const currentIndex = index;
-    const formsubmitLabel = (index === "startTest") ? "Iniciar" : "Cadastrar";
 
     this.setState({
       formMode: "open",
       currentIndex,
-      formsubmitLabel,
     })
   }
 
@@ -82,15 +77,8 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
     this.setState({ formMode: "loading" })
 
     const index = this.state.currentIndex;
-    let postValues: Function;
-
-    if (index === "startTest")
-      //Função gatilho iniciar teste aqui
-      postValues = () => (true);
-    else
-      postValues = this.props.data[index].asyncPost;
-
-    const response: boolean = await postValues(values);
+    let postValues = this.props.data[index].asyncPost;
+    const response = await postValues(values);
 
     if (response) {
       alert("Salvo com sucesso!");
@@ -114,7 +102,7 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
 
   render() {
     const index = this.state.currentIndex;
-    const currentForm = (index === "startTest") ? FormNewTest : this.props.data[index].form;
+    const currentForm = this.props.data[index].form;
 
     return (
       <aside className={`sidebar_new ${this.state.sidebarMode ? "" : "close"}`}>
@@ -127,16 +115,12 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
           {this.renderList()}
         </ul>
 
-        <ul className="start_test">
-          {this.renderItem("INICIAR TESTE", false, "startTest")}
-        </ul>
-
         <ModalForm
           mode={this.state.formMode}
           onSubmit={(values: Object) => this.onSubmit(values)}
           onCancel={() => this.onCancel()}
           form={currentForm}
-          submitLabel={this.state.formsubmitLabel}
+          submitLabel="Cadastrar"
         />
       </aside>
     )
