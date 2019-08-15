@@ -1,4 +1,4 @@
-import { FieldInterface } from "../../Components/Form/Interfaces";
+import { FieldInterface } from "../../../Components/Form/Interfaces";
 
 export const FormTypeTest: Array<FieldInterface> = [
   {
@@ -31,14 +31,14 @@ export const FormNewTest: Array<FieldInterface> = [
     key: "test_options",
     name: "Tipo do teste",
     required: true,
-    getOptions: async () => await console.log("Get options here"),
+    getOptions: () => ([{ label: "opção1", id: 1 }, { label: "opção2", id: 2 }]),
   },
   {
     typeId: 4, //Opções
     key: "test_person",
     name: "Sujeito",
     required: true,
-    getOptions: async () => await console.log("Get options here"),
+    getOptions: () => ([{ label: "opção - 1", id: 1 }, { label: "opção - 2", id: 2 }]),
   },
 ]
 

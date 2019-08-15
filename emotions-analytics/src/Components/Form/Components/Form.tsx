@@ -41,7 +41,7 @@ export default class Form extends React.Component<Props, State> {
 
 
   setValues() {
-    
+
     const receivedValues = this.props.values ? this.props.values : [];
     let values: any = {};
 
@@ -54,13 +54,12 @@ export default class Form extends React.Component<Props, State> {
   }
 
 
-  onChange(event: any) {
+  onChange(value: any, key: string) {
 
-    const key = event.target.name;
-    const value = event.target.value;
     let values: any = this.state.values;
-
     values[key] = value;
+    console.log("onChange values: ", values);
+
     this.setState({ values });
   }
 
@@ -80,12 +79,13 @@ export default class Form extends React.Component<Props, State> {
 
         const values: any = this.state.values;
         const value = values[field.key];
-        
+
         return (
           <Field
             {...field}
+            keyName={field.key}
             value={value}
-            onChange={(event: any) => this.onChange(event)}
+            onChange={(value: any, key: string) => this.onChange(value, key)}
           />
         )
       })
@@ -96,12 +96,12 @@ export default class Form extends React.Component<Props, State> {
   render() {
 
     const submitLabel = this.props.submitLabel ? this.props.submitLabel : "Cadastrar";
-
+    
     return (
       <form className="form" onSubmit={(event) => this.onSubmit(event)}>
 
         {this.renderform()}
-      
+
         <div className="wrapper_buttons">
           <div className="magic_wrapper">
 
@@ -116,6 +116,7 @@ export default class Form extends React.Component<Props, State> {
             : null}
 
             <input className="button" type="submit" value={submitLabel} />
+
           </div>
         </div>
       </form>

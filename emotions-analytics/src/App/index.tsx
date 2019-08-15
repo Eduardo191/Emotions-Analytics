@@ -2,8 +2,8 @@ import React from "react";
 import Routes from "./Routes";
 import SidebarMenu from "../Components/SidebarMenu";
 import SidebarNew from "../Components/SidebarNew";
-import { DataMenu } from "../Services/Get/Menu";
-import { DataSidebarNew } from "../Services/Get/New";
+import { DataMenu } from "../Services/Layout/Get/Menu";
+import { DataSidebarNew } from "../Services/Layout/Get/New";
 import StartTestFixed from "../Components/StartTestFixed";
 
 interface Props {

@@ -1,6 +1,6 @@
-import { FormTypeTest, FormPerson } from "../Get/Forms";
-import { PostPeople } from "../Post/PostPeople";
-import { PostTestType } from "../Post/PostTestType";
+import { FormTypeTest, FormPerson } from "./Forms";
+import { PostPeople } from "../../API/Post/PostPeople";
+import { PostTestType } from "../../API/Post/PostTestType";
 
 export const DataSidebarNew = [
   {
