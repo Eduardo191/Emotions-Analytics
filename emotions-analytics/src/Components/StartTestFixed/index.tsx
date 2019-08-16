@@ -3,6 +3,7 @@ import { FormNewTest } from "../../Services/Layout/Get/Forms"
 import Icon from "../Icon";
 import { delay } from "../../Services/Library/delay";
 import { ModalForm } from "../Form/Components/FormTypes/ModalForm";
+import { initializeTest } from "../../Services/TestGoingOn";
 
 interface State {
   formMode: "open" | "close" | "loading";
@@ -20,12 +21,14 @@ export default class StartTestFixed extends React.Component<Props, State>{
   }
 
 
-  async onSubmit(values: Object) {
+  async onSubmit(values: any) {
 
     this.setState({ formMode: "loading" })
 
-    /* Gatilho para iniciar o teste aqui */
-    await delay(1000);
+    const testTypeId = values.test_test;
+    const personId = values.test_person;
+    
+    const response = await initializeTest(testTypeId, personId);
 
     this.setState({ formMode: "close" });
   }

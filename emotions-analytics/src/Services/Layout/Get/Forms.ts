@@ -28,7 +28,7 @@ export const FormTypeTest: Array<FieldInterface> = [
 export const FormNewTest: Array<FieldInterface> = [
   {
     typeId: 4, //Opções
-    key: "test_options",
+    key: "test_type",
     name: "Tipo do teste",
     required: true,
     getOptions: () => ([{ label: "opção1", id: 1 }, { label: "opção2", id: 2 }]),
