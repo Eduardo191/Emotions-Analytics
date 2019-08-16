@@ -1,8 +1,9 @@
-import { combineReducers } from "redux";
+import { combineReducers, createStore } from "redux";
 
 /** Reducers */
-import { reducer as AffectivaReducer } from "./Affectiva/Reducer";
+import { reducer as WatchingReducer } from "./Affectiva/Reducer";
 
-export default combineReducers({
-  affectiva: AffectivaReducer
-})
+const reducers = combineReducers({
+  affectiva: WatchingReducer
+});
+export const store = createStore(reducers);

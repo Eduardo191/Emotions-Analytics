@@ -1,5 +1,5 @@
-import { AffectivaReducer } from "./Affectiva/Interfaces";
+import { WatchingReducer } from "./Affectiva/Interfaces";
 
 export interface ReducerState {
-  affectiva: AffectivaReducer;
+  affectiva: WatchingReducer;
 } 

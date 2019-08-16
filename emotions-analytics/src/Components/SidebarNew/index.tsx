@@ -73,7 +73,6 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
 
 
   async onSubmit(values: Object) {
-    console.log("onSubmit: ", values);
     
     this.setState({ formMode: "loading" })
 

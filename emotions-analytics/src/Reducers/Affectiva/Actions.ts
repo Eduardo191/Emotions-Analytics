@@ -1,8 +1,22 @@
-import { CHANGE_ACTIVED } from './Types';
+import { CHANGE_ACTIVATED, CHANGE_TEST_ID, CHANGE_AFFECTIVA } from './Types';
 
-export const changeActived = (bool: boolean) => (
+export const setAffectivaActivated = (bool: boolean) => (
   {
-    type: CHANGE_ACTIVED,
-    callback: () => (bool), 
+    type: CHANGE_ACTIVATED,
+    payload: bool,
+  }
+)
+
+export const setAffectivaTestId = (testId: number) => (
+  {
+    type: CHANGE_TEST_ID,
+    payload: testId,
+  }
+)
+
+export const setAffectiva = (faces: any, image: any) => (
+  {
+    type: CHANGE_AFFECTIVA,
+    payload: {faces, image},
   }
 )

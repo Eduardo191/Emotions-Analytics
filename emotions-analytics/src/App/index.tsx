@@ -24,7 +24,14 @@ class App extends React.Component<Props> {
   
   componentDidMount = () => {
     if(this.props.affectivaActived) 
-      this.props.history.push("/testando")
+      this.props.history.push("/testando");
+  }
+
+  componentDidUpdate = (prevProps: Props) => {
+    if (prevProps.affectivaActived !== this.props.affectivaActived) {
+      if(this.props.affectivaActived) 
+        this.props.history.push("/testando");
+    }
   }
 
   render() {
@@ -43,11 +50,11 @@ class App extends React.Component<Props> {
 const mapStateToProps = (state: ReducerState) => {
   
   const {
-    actived
+    activated
   } = state.affectiva
 
   return {
-    affectivaActived: actived
+    affectivaActived: activated
   }
 }
 
