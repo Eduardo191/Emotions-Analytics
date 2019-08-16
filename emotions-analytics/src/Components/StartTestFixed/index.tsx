@@ -1,7 +1,6 @@
 import React from "react";
 import { FormNewTest } from "../../Services/Layout/Get/Forms"
 import Icon from "../Icon";
-import { delay } from "../../Services/Library/delay";
 import { ModalForm } from "../Form/Components/FormTypes/ModalForm";
 import { initializeTest } from "../../Services/TestGoingOn";
 

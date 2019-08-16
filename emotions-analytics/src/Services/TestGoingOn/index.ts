@@ -1,7 +1,7 @@
 import { store } from "../../Reducers";
 // import { setAffectivaActivated, setAffectivaTestId } from "../../Reducers/Affectiva/Actions"
 import { PostTest } from "../API/Post/PostTest";
-// import { initializeAffectiva } from "./Affectiva";
+import { initializeAffectiva } from "./Affectiva";
 
 export async function initializeTest(testTypeId: number, personId: number) {
 
@@ -11,7 +11,7 @@ export async function initializeTest(testTypeId: number, personId: number) {
 
   if (testId) {
    
-    // await initializeAffectiva();
+    await initializeAffectiva();
     // await initializeTracking();
     // startTimeStamp();
   

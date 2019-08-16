@@ -58,7 +58,6 @@ export default class Form extends React.Component<Props, State> {
 
     let values: any = this.state.values;
     values[key] = value;
-    console.log("onChange values: ", values);
 
     this.setState({ values });
   }
