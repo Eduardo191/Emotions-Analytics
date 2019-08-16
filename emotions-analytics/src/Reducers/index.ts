@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
 /** Reducers */
-import { reducer as AffectivaReducer } from "./Affectiva/Reducer";
+import { reducer as TestGoingOnReducer } from "./TestGoingOnReducer/Reducer";
 
 export default combineReducers({
-  affectiva: AffectivaReducer
+  testGoingOn: TestGoingOnReducer
 })

@@ -1,11 +1,11 @@
 import { CHANGE_ACTIVED } from "./Types";
-import { AffectivaReducer } from "./Interfaces";
+import { TestGoingOnReducer } from "./Interfaces";
 
 const initial_state = {
   actived: true
 }
 
-export const reducer = (state: AffectivaReducer = initial_state, action: any) => {
+export const reducer = (state: TestGoingOnReducer = initial_state, action: any) => {
 
   switch (action.type) {
 

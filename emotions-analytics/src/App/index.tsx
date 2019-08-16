@@ -15,7 +15,7 @@ import StartTestFixed from "../Components/StartTestFixed";
 
 
 interface ReduxState {
-  affectivaActived: boolean;
+  testGoingOnActived: boolean;
 }
 
 type Props = RouteComponentProps<{}> & ReduxState;
@@ -23,7 +23,7 @@ type Props = RouteComponentProps<{}> & ReduxState;
 class App extends React.Component<Props> {
   
   componentDidMount = () => {
-    if(this.props.affectivaActived) 
+    if(this.props.testGoingOnActived) 
       this.props.history.push("/testando")
   }
 
@@ -44,10 +44,10 @@ const mapStateToProps = (state: ReducerState) => {
   
   const {
     actived
-  } = state.affectiva
+  } = state.testGoingOn
 
   return {
-    affectivaActived: actived
+    testGoingOnActived: actived
   }
 }
 
