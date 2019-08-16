@@ -1,15 +1,31 @@
 import React from "react";
+
+import { withRouter, RouteComponentProps } from "react-router";
 import Routes from "./Routes";
+
+import { connect } from "react-redux";
+import { ReducerState } from "../Reducers/Interfaces";
+
+import { DataSidebarNew } from "../Services/Layout/Get/New";
+import { DataMenu } from "../Services/Layout/Get/Menu";
+
 import SidebarMenu from "../Components/SidebarMenu";
 import SidebarNew from "../Components/SidebarNew";
-import { DataMenu } from "../Services/Layout/Get/Menu";
-import { DataSidebarNew } from "../Services/Layout/Get/New";
 import StartTestFixed from "../Components/StartTestFixed";
 
-interface Props {
+
+interface ReduxState {
+  affectivaActived: boolean;
 }
 
-export default class App extends React.Component<Props> {
+type Props = RouteComponentProps<{}> & ReduxState;
+
+class App extends React.Component<Props> {
+  
+  componentDidMount = () => {
+    if(this.props.affectivaActived) 
+      this.props.history.push("/testando")
+  }
 
   render() {
     return (
@@ -22,3 +38,22 @@ export default class App extends React.Component<Props> {
     )
   }
 }
+
+
+const mapStateToProps = (state: ReducerState) => {
+  
+  const {
+    actived
+  } = state.affectiva
+
+  return {
+    affectivaActived: actived
+  }
+}
+
+const mapDispatchToProps = { }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(App))

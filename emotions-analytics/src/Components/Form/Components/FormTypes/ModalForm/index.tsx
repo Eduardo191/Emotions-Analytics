@@ -1,18 +1,20 @@
 import React from "react";
-import Form, { Props } from "../../Form";
+import Form, { Props as ModalProps } from "../../Form";
 import loading from "../../../../../Assets/loading.svg";
-
-interface PropsModalForm {
-  mode?: "open" | "close" | "loading";
-}
 
 interface StateModalProps {
   mode: "open" | "close" | "loading";
 }
 
-export class ModalForm extends React.Component<PropsModalForm & Props, StateModalProps> {
+interface OwnProps {
+  mode?: "open" | "close" | "loading";
+}
 
-  constructor(props: PropsModalForm & Props) {
+type Props = OwnProps & ModalProps; 
+
+export class ModalForm extends React.Component<Props, StateModalProps> {
+
+  constructor(props: Props) {
     super(props);
     this.state = {
       mode: "close",
@@ -25,7 +27,7 @@ export class ModalForm extends React.Component<PropsModalForm & Props, StateModa
   }
 
 
-  componentDidUpdate = (prevProps: PropsModalForm & Props) => {
+  componentDidUpdate = (prevProps: Props) => {
     if (prevProps.mode !== this.props.mode) {
       this.setModeByProps();
     }
