@@ -1,8 +1,8 @@
-import { CHANGE_ACTIVED } from './Types';
+import { SET_ACTIVED } from './Types';
 
-export const changeActived = (bool: boolean) => (
+export const setTestGoingOnActived = (bool: boolean) => (
   {
-    type: CHANGE_ACTIVED,
+    type: SET_ACTIVED,
     callback: () => (bool), 
   }
 )

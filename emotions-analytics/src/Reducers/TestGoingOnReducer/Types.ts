@@ -1,1 +1,1 @@
-export const CHANGE_ACTIVED = "CHANGE_ACTIVED";
+export const SET_ACTIVED = "CHANGE_ACTIVED";
