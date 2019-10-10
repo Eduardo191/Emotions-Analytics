@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { FieldInterface } from "../../Components/Form/Interfaces";
+import { FieldInterface } from "../Form/Interfaces";
 import { RouteComponentProps } from "react-router-dom";
 import { ModalForm } from "../Form";
 import Icon from "../Icon";

@@ -1,5 +1,5 @@
 import React from "react";
-import iconSet from "../Assets/selection.json";
+import iconSet from "../../../Assets/selection.json";
 //@ts-ignore
 import IcomoonReact from "icomoon-react";
 

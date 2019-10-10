@@ -1,6 +1,6 @@
 import React from "react";
 import Form, { Props as ModalProps } from "../../Form";
-import loading from "../../../../../Assets/loading.svg";
+import loading from "../../../../../../../Assets/loading.svg";
 
 interface StateModalProps {
   mode: "open" | "close" | "loading";

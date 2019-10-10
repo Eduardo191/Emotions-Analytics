@@ -1,8 +1,7 @@
 import React from "react";
-import { FormNewTest } from "../../Services/Layout/Get/Forms"
+import { FormNewTest } from "../../../Controller/Layout/Get/Forms"
 import Icon from "../Icon";
 import { ModalForm } from "../Form/Components/FormTypes/ModalForm";
-import { initializeTest } from "../../Services/TestGoingOn";
 
 interface State {
   formMode: "open" | "close" | "loading";
@@ -27,8 +26,6 @@ export default class StartTestFixed extends React.Component<Props, State>{
     const testTypeId = values.test_test;
     const personId = values.test_person;
     
-    const response = await initializeTest(testTypeId, personId);
-
     this.setState({ formMode: "close" });
   }
 

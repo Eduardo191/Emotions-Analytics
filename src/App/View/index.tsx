@@ -4,14 +4,14 @@ import { withRouter, RouteComponentProps } from "react-router";
 import Routes from "./Routes";
 
 import { connect } from "react-redux";
-import { ReducerState } from "../Reducers/Interfaces";
+import { ReducerState } from "../Redux/Interfaces";
 
-import { DataSidebarNew } from "../Services/Layout/Get/New";
-import { DataMenu } from "../Services/Layout/Get/Menu";
+import { DataSidebarNew } from "../Controller/Layout/Get/New";
+import { DataMenu } from "../Controller/Layout/Get/Menu";
 
-import SidebarMenu from "../Components/SidebarMenu";
-import SidebarNew from "../Components/SidebarNew";
-import StartTestFixed from "../Components/StartTestFixed";
+import SidebarMenu from "./Components/SidebarMenu";
+import SidebarNew from "./Components/SidebarNew";
+import StartTestFixed from "./Components/StartTestFixed";
 
 
 interface ReduxState {

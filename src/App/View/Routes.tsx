@@ -2,10 +2,10 @@ import React from "react";
 import { Route, Switch } from 'react-router-dom';
 
 //SCENES
-import Home from "./Home";
-import Tests from "./Tests";
-import Persons from "./Persons";
-import TestGoingOn from "./TestGoingOn";
+import Home from "./Scenes/Home";
+import Tests from "./Scenes/Tests";
+import Persons from "./Scenes/Persons";
+import TestGoingOn from "./Scenes/TestGoingOn";
 
 export default class Routes extends React.Component {
   render() {

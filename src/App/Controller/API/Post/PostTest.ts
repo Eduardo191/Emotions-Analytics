@@ -1,4 +1,4 @@
-import { delay } from "../../Library";
+import { delay } from "../../../Logic/Library";
 
 export async function PostTest(testTypeId: number, personId: number) {
   await delay(3000);

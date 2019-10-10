@@ -2,7 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { RouteComponentProps } from "react-router-dom";
 import Icon from "../Icon";
-import { delay } from "../../Services/Library/delay";
+import { delay } from "../../../Logic/Library/delay";
 
 interface OptionMenu {
   title: string;

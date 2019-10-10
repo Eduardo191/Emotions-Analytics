@@ -1,4 +1,4 @@
-import { FieldInterface } from "../../../Components/Form/Interfaces";
+import { FieldInterface } from "../../../View/Components/Form/Interfaces";
 
 export const FormTypeTest: Array<FieldInterface> = [
   {
