@@ -6,8 +6,8 @@ import Routes from "./Routes";
 import { connect } from "react-redux";
 import { ReducerState } from "../Redux/Interfaces";
 
-import { DataSidebarNew } from "../Controller/Layout/Get/New";
-import { DataMenu } from "../Controller/Layout/Get/Menu";
+import { DataSidebarNew } from "../Data/New";
+import { DataMenu } from "../Data/Menu";
 
 import SidebarMenu from "./Components/SidebarMenu";
 import SidebarNew from "./Components/SidebarNew";
