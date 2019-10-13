@@ -3,9 +3,6 @@ import React from "react";
 import { withRouter, RouteComponentProps } from "react-router";
 import Routes from "./Routes";
 
-import { connect } from "react-redux";
-import { ReducerState } from "../Redux/Interfaces";
-
 import { DataSidebarNew } from "../Data/SidebarNew";
 import { DataSidebarMenu } from "../Data/SidebarMenu";
 
@@ -13,18 +10,11 @@ import SidebarMenu from "./Components/SidebarMenu";
 import SidebarNew from "./Components/SidebarNew";
 import StartTestFixed from "./Components/StartTestFixed";
 
-
-interface ReduxState {
-  testGoingOnActived: boolean;
-}
-
-type Props = RouteComponentProps<{}> & ReduxState;
+type Props = RouteComponentProps<{}>;
 
 class App extends React.Component<Props> {
   
   componentDidMount = () => {
-    if(this.props.testGoingOnActived) 
-      this.props.history.push("/testando")
   }
 
   render() {
@@ -39,21 +29,4 @@ class App extends React.Component<Props> {
   }
 }
 
-
-const mapStateToProps = (state: ReducerState) => {
-  
-  const {
-    actived
-  } = state.testGoingOn
-
-  return {
-    testGoingOnActived: actived
-  }
-}
-
-const mapDispatchToProps = { }
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(App))
+export default withRouter(App);
