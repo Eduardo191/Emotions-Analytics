@@ -1,7 +1,7 @@
 import React from "react";
-import { FormNewTest } from "../../../Controller/Layout/Get/Forms"
 import Icon from "../Icon";
 import { ModalForm } from "../Form/Components/FormTypes/ModalForm";
+import { Test } from "../../../Controller";
 
 interface State {
   formMode: "open" | "close" | "loading";
@@ -25,7 +25,7 @@ export default class StartTestFixed extends React.Component<Props, State>{
 
     const testTypeId = values.test_test;
     const personId = values.test_person;
-    
+
     this.setState({ formMode: "close" });
   }
 
@@ -41,24 +41,27 @@ export default class StartTestFixed extends React.Component<Props, State>{
 
 
   render() {
+
+    const form = Test.getForm();
+
     return (
       <div className="start_test">
 
         <div className="wrapper_button" onClick={() => this.openModal()}>
-          
+
           <div className="icon">
             <Icon name="rocket" size="100%" color="#fff" />
           </div>
-          
-          <span>Iniciar Teste</span>  
-        
+
+          <span>Iniciar Teste</span>
+
         </div>
 
         <ModalForm
           mode={this.state.formMode}
           onSubmit={(values: Object) => this.onSubmit(values)}
           onCancel={() => this.onCancel()}
-          form={FormNewTest}
+          form={form}
           submitLabel="Iniciar"
         />
       </div>

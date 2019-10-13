@@ -1,13 +1,12 @@
-import { FormTypeTest, FormPerson } from "../Controller/Layout/Get/Forms";
-import { People, Test, } from "../Controller/";
+import { People, TestType, } from "../Controller/";
 import { PeopleInterface } from "../Controller/People/interface";
-import { TestInterface } from "../Controller/Test/interface";
+import { TestTypeInterface } from "../Controller/TestType/interface";
 
 export const DataSidebarNew = [
   {
     title: "Nova pessoa",
     iconName: "peoples",
-    form: FormPerson,
+    form: People.getForm(),
     asyncPost: async (value: PeopleInterface) => {
       let people = new People(value);
       const retry = people.postValue();
@@ -17,10 +16,10 @@ export const DataSidebarNew = [
   {
     title: "Novo teste",
     iconName: "chemical",
-    form: FormTypeTest,
-    asyncPost: async (value: TestInterface) => {
-      let test = new Test(value);
-      const retry = test.postValue();
+    form: TestType.getForm(),
+    asyncPost: async (value: TestTypeInterface) => {
+      let testType = new TestType(value);
+      const retry = testType.postValue();
       return retry;
     },
   },

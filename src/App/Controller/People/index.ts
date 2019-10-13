@@ -10,7 +10,7 @@ export class People extends Controller {
         super(value);
     }
 
-    public static async getForm() {
+    public static getForm() {
         return People.form;
     }
 }
