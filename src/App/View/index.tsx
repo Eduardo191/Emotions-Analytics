@@ -6,8 +6,8 @@ import Routes from "./Routes";
 import { connect } from "react-redux";
 import { ReducerState } from "../Redux/Interfaces";
 
-import { DataSidebarNew } from "../Data/New";
-import { DataMenu } from "../Data/Menu";
+import { DataSidebarNew } from "../Data/SidebarNew";
+import { DataSidebarMenu } from "../Data/SidebarMenu";
 
 import SidebarMenu from "./Components/SidebarMenu";
 import SidebarNew from "./Components/SidebarNew";
@@ -31,7 +31,7 @@ class App extends React.Component<Props> {
     return (
       <div className="container">
         <SidebarNew data={DataSidebarNew} />
-        <SidebarMenu data={DataMenu} />
+        <SidebarMenu data={DataSidebarMenu} />
         <StartTestFixed />
         <Routes />
       </div>

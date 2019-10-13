@@ -1,4 +1,4 @@
-export const DataMenu = [
+export const DataSidebarMenu = [
   {
     title: 'home',
     iconName: 'home',

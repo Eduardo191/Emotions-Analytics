@@ -1,4 +1,4 @@
-import { People, TestType, } from "../Controller/";
+import { People, TestType, } from "../Controller";
 import { PeopleInterface } from "../Controller/People/interface";
 import { TestTypeInterface } from "../Controller/TestType/interface";
 
