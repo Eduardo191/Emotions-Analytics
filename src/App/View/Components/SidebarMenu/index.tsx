@@ -81,7 +81,6 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
   async compress() {
 
     this.setState({ compressedClass: "uncompressed outside" });
-
     await delay(300);
 
     this.setState({
@@ -90,7 +89,7 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
     });
 
     await delay(100);
-    
+
     this.setState({
       compressedClass: "compressed",
       compressed: true,
@@ -100,7 +99,6 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
   async uncompress() {
 
     this.setState({ compressedClass: "compressed invisible" });
-
     await delay(300);
 
     this.setState({
@@ -109,7 +107,7 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
     });
 
     await delay(100);
-    
+
     this.setState({
       compressedClass: "uncompressed",
       compressed: false,

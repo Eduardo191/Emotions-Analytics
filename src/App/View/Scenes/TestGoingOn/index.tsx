@@ -4,7 +4,6 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 class TestGoingOn extends React.Component<RouteComponentProps<{}>> {
 
   componentDidMount = () => {
-    // this.props.history.push("/");
   }
 
   render() {

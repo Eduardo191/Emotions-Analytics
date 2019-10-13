@@ -18,6 +18,7 @@ interface State {
 export default class Field4Type extends React.Component<Props & FieldInterface, State> {
 
   constructor(props: Props & FieldInterface) {
+    
     super(props);
 
     this.state = {
@@ -34,7 +35,6 @@ export default class Field4Type extends React.Component<Props & FieldInterface, 
   async setOptions() {
     //@ts-ignore
     const options = await this.props.getOptions ? this.props.getOptions() : [];
-
     this.setState({ options });
   }
 
@@ -54,7 +54,6 @@ export default class Field4Type extends React.Component<Props & FieldInterface, 
 
     const value = event.target.value;
     const key = this.props.keyName;
-
     this.props.onChange(value, key);
   }
 

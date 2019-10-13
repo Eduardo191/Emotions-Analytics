@@ -1,2 +1,5 @@
-import { ModalForm as ModalFormImport } from "./Components/FormTypes/ModalForm";
-export const ModalForm = ModalFormImport;
+import { ModalForm } from "./Components/FormTypes/ModalForm";
+
+export {
+    ModalForm,
+}
