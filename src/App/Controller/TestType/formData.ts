@@ -22,4 +22,11 @@ export const formData: Array<FieldInterface> = [
     placeholder: "Objetivo do teste",
     required: true,
   },
+  {
+    typeId: 4, //Opções
+    key: "test_type_HaveAbandonment",
+    name: "O teste pode ser abandonado?",
+    required: true,
+    getOptions: () => ([{ label: "Sim", id: 1 }, { label: "Não", id: 2 }]),
+  },
 ]

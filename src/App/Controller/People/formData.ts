@@ -16,6 +16,13 @@ export const formData: Array<FieldInterface> = [
         required: true,
     },
     {
+        typeId: 5, //Data
+        key: "Person_birthday",
+        name: "Aniversário",
+        placeholder: "Data de aniversário do participante",
+        required: true,
+    },
+    {
         typeId: 3, //Anexo
         key: "person_consent",
         name: "Consentimento",
