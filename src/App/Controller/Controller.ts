@@ -9,6 +9,7 @@ export class Controller {
     }
 
     public async postValue() {
+        console.log("this.value ", this.value);
         await delay(3000);
         return true;
     }

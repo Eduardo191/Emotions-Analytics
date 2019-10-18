@@ -1,8 +1,9 @@
 import React from "react";
 import { FieldInterface } from "../../../Interfaces";
+import moment from "moment";
 
 /*====================================================================================================================*/
-/*==================================================== Text Simple ===================================================*/
+/*======================================================= Data =======================================================*/
 /*====================================================================================================================*/
 
 interface Props {
@@ -15,10 +16,10 @@ export default class Field1Type extends React.Component<Props & FieldInterface> 
 
   onChange(event: any) {
 
-    const value = event.target.value;
+    let dateValue = event.target.value;
+    dateValue = moment().format(dateValue);
     const key = this.props.keyName;
-
-    this.props.onChange(value, key);
+    this.props.onChange(dateValue, key);
   }
 
 

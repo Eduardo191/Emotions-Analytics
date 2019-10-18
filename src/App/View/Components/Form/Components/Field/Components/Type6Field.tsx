@@ -2,7 +2,7 @@ import React from "react";
 import { FieldInterface } from "../../../Interfaces";
 
 /*====================================================================================================================*/
-/*======================================================= Options ====================================================*/
+/*======================================================= Boolean ====================================================*/
 /*====================================================================================================================*/
 
 interface Props {
@@ -10,41 +10,39 @@ interface Props {
   onChange: Function;
   getOptions: Function;
   value?: any;
+  defaultValue: boolean;
 }
 
 interface State {
-  options: Array<{ label: string, id: number }>;
+  options: Array<{ label: string, valueOption: number }>;
 }
 
-export default class Field4Type extends React.Component<Props & FieldInterface, State> {
+export default class Field6Type extends React.Component<Props & FieldInterface, State> {
 
   constructor(props: Props & FieldInterface) {
 
     super(props);
 
     this.state = {
-      options: [],
+      options: [
+        { label: "Sim", valueOption: 1 },
+        { label: "Não", valueOption: 0 },
+      ],
     }
   }
 
 
   componentDidMount = async () => {
-
-    const options = await this.props.getOptions ? this.props.getOptions() : [];
-    
-    if (options.length !== 0) {
-      const key = this.props.keyName;
-      this.props.onChange(options[0].id, key);
-    }
-
-    this.setState({ options });
+    const key = this.props.keyName;
+    const value = this.props.defaultValue;
+    this.props.onChange(value, key);
   }
 
   renderOptions() {
     return (
-      this.state.options.map(({ id, label }) => {
+      this.state.options.map(({ valueOption, label }) => {
         return (
-          <option key={`${id}`} value={id}>{label}</option>
+          <option key={`${valueOption}`} value={valueOption}>{label}</option>
         )
       })
     )
@@ -52,7 +50,8 @@ export default class Field4Type extends React.Component<Props & FieldInterface, 
 
 
   onChange(event: any) {
-    const value = parseInt(event.target.value);
+    const retryValue = parseInt(event.target.value);
+    const value = retryValue ? true : false;
     const key = this.props.keyName;
     this.props.onChange(value, key);
   }
@@ -62,7 +61,7 @@ export default class Field4Type extends React.Component<Props & FieldInterface, 
     return (
       <select
         required={this.props.required}
-        value={this.props.value}
+        value={this.props.defaultValue ? 1 : 0}
         onChange={(event) => this.onChange(event)}
       >
         {this.renderOptions()}

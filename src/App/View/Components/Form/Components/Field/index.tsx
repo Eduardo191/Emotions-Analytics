@@ -6,6 +6,8 @@ import Type1Field from "./Components/Type1Field";
 import Type2Field from "./Components/Type2Field";
 import Type3Field from "./Components/Type3Field";
 import Type4Field from "./Components/Type4Field";
+import Type5Field from "./Components/Type5Field";
+import Type6Field from "./Components/Type6Field";
 
 interface Props {
   keyName: string;
@@ -38,6 +40,16 @@ export default class Field extends React.Component<Props & FieldInterface> {
       case 4:
         //Options
         FieldInput = Type4Field;
+        break;
+
+      case 5:
+        //Data
+        FieldInput = Type5Field;
+        break;
+
+      case 6:
+        //Boolean
+        FieldInput = Type6Field;
         break;
 
       default:
