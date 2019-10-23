@@ -1,0 +1,13 @@
+/*Structure*/
+@import 'Structure/vars';
+@import 'Structure/responsive';
+@import 'Structure/container';
+@import 'Structure/reset';
+
+/*Components*/
+@import '../App/View/Components/StartTestFixed/styles';
+@import '../App/View/Components/SidebarMenu/styles';
+@import '../App/View/Components/SidebarNew/styles';
+@import '../App/View/Components/Form/styles';
+  //form types
+  @import '../App/View/Components/Form/Components/FormTypes/ModalForm/styles';

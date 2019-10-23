@@ -1,1 +1,0 @@
-export const CHANGE_ACTIVED = "CHANGE_ACTIVED";
