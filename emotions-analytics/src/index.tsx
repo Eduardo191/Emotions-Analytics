@@ -7,7 +7,10 @@ import './Styles/index.scss';
 import App from "./App";
 
 import { Provider } from "react-redux";
-import { store } from "./Reducers";
+import { createStore } from "redux";
+import Reducers from "./Reducers";
+
+const store = createStore(Reducers);
 
 ReactDOM.render(
   <BrowserRouter>

@@ -1,30 +1,17 @@
-import { CHANGE_ACTIVATED, CHANGE_TEST_ID, CHANGE_AFFECTIVA } from "./Types";
-import { WatchingReducer } from "./Interfaces";
+import { CHANGE_ACTIVED } from "./Types";
+import { AffectivaReducer } from "./Interfaces";
 
 const initial_state = {
-  activated: false,
-  testId: null,
-  affectiva: {
-    faces: null,
-    image: null,
-  }
+  actived: true
 }
 
-export const reducer = (state: WatchingReducer = initial_state, action: any) => {
+export const reducer = (state: AffectivaReducer = initial_state, action: any) => {
 
   switch (action.type) {
 
-    case CHANGE_ACTIVATED:
-      const activated = action.payload();
-      return { activated }
-    
-    case CHANGE_TEST_ID:
-      const testId = action.payload();
-      return { testId }
-
-    case CHANGE_AFFECTIVA:
-      const affectiva = action.payload();
-      return { affectiva }
+    case CHANGE_ACTIVED:
+      const actived = action.callback();
+      return { actived }
 
     default:
       return state

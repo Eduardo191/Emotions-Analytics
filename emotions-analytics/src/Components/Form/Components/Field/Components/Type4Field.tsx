@@ -52,7 +52,7 @@ export default class Field4Type extends React.Component<Props & FieldInterface, 
 
   onChange(event: any) {
 
-    const value = parseInt(event.target.value);
+    const value = event.target.value;
     const key = this.props.keyName;
 
     this.props.onChange(value, key);
