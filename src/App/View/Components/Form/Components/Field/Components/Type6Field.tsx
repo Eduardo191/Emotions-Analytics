@@ -14,6 +14,7 @@ interface Props {
 }
 
 interface State {
+  value: boolean;
   options: Array<{ label: string, valueOption: number }>;
 }
 
@@ -24,6 +25,7 @@ export default class Field6Type extends React.Component<Props & FieldInterface, 
     super(props);
 
     this.state = {
+      value: this.props.defaultValue,
       options: [
         { label: "Sim", valueOption: 1 },
         { label: "Não", valueOption: 0 },
@@ -34,9 +36,10 @@ export default class Field6Type extends React.Component<Props & FieldInterface, 
 
   componentDidMount = async () => {
     const key = this.props.keyName;
-    const value = this.props.defaultValue;
+    const value = this.state.value;
     this.props.onChange(value, key);
   }
+
 
   renderOptions() {
     return (
@@ -54,6 +57,7 @@ export default class Field6Type extends React.Component<Props & FieldInterface, 
     const value = retryValue ? true : false;
     const key = this.props.keyName;
     this.props.onChange(value, key);
+    this.setState({ value });
   }
 
 
@@ -61,11 +65,11 @@ export default class Field6Type extends React.Component<Props & FieldInterface, 
     return (
       <select
         required={this.props.required}
-        value={this.props.defaultValue ? 1 : 0}
+        value={this.state.value ? 1 : 0}
         onChange={(event) => this.onChange(event)}
       >
         {this.renderOptions()}
       </select>
     )
   }
-} 
+}

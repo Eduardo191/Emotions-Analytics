@@ -8,10 +8,6 @@ export interface Props {
   form: Array<FieldInterface>;
   onCancel?: Function;
   submitLabel?: string;
-  values?: Array<{
-    key: string;
-    value: any;
-  }>;
 }
 
 interface State {
@@ -28,45 +24,15 @@ export default class Form extends React.Component<Props, State> {
   }
 
 
-  componentDidMount = () => {
-    this.setValues();
-  }
-
-
-  componentDidUpdate = (prevProps: Props) => {
-    if (prevProps.form !== this.props.form) {
-      this.setValues();
-    }
-  }
-
-
-  setValues() {
-
-    const receivedValues = this.props.values ? this.props.values : [];
-    let values: any = {};
-
-    _.map(receivedValues, (value) => {
-      values[value.key] = value.value ? value.value : "";
-    });
-
-
-    this.setState({ values });
-  }
-
-
   onChange(value: any, key: string) {
-
     let values: any = this.state.values;
     values[key] = value;
-
     this.setState({ values });
   }
 
 
   onSubmit(event: any) {
-
     event.preventDefault();
-
     const values = this.state.values;
     this.props.onSubmit(values);
   }
@@ -95,7 +61,7 @@ export default class Form extends React.Component<Props, State> {
   render() {
 
     const submitLabel = this.props.submitLabel ? this.props.submitLabel : "Cadastrar";
-    
+
     return (
       <form className="form" onSubmit={(event) => this.onSubmit(event)}>
 
@@ -112,7 +78,7 @@ export default class Form extends React.Component<Props, State> {
               >
                 Cancelar
               </div>
-            : null}
+              : null}
 
             <input className="button" type="submit" value={submitLabel} />
 

@@ -31,7 +31,7 @@ export default class Field4Type extends React.Component<Props & FieldInterface, 
   componentDidMount = async () => {
 
     const options = await this.props.getOptions ? this.props.getOptions() : [];
-    
+
     if (options.length !== 0) {
       const key = this.props.keyName;
       this.props.onChange(options[0].id, key);
@@ -39,6 +39,7 @@ export default class Field4Type extends React.Component<Props & FieldInterface, 
 
     this.setState({ options });
   }
+
 
   renderOptions() {
     return (

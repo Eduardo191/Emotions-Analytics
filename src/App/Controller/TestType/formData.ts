@@ -27,6 +27,6 @@ export const formData: Array<FieldInterface> = [
     key: "HaveAbandonment",
     name: "O teste pode ser abandonado?",
     required: true,
-    defaultValue: false,
+    defaultValue: true,
   },
 ]
