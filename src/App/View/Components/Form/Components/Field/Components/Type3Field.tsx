@@ -27,7 +27,7 @@ export default class Field3Type extends React.Component<Props & FieldInterface> 
       <input
         type="file"
         required={this.props.required}
-        value={this.props.value}
+        value={this.props.value ? this.props.value : ""}
         onChange={(event) => this.onChange(event)}
       />
     )

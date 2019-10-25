@@ -28,7 +28,7 @@ export default class Field1Type extends React.Component<Props & FieldInterface> 
         type="text"
         placeholder={this.props.placeholder}
         required={this.props.required}
-        value={this.props.value}
+        value={this.props.value ? this.props.value : ""}
         onChange={(event) => this.onChange(event)}
       />
     )

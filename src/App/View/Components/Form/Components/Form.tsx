@@ -31,10 +31,24 @@ export default class Form extends React.Component<Props, State> {
   }
 
 
-  onSubmit(event: any) {
+  async onSubmit(event: any) {
     event.preventDefault();
     const values = this.state.values;
-    this.props.onSubmit(values);
+    await this.props.onSubmit(values);
+    this.resetValue();
+  }
+
+
+  onCancel() {
+    if (this.props.onCancel) {
+      this.props.onCancel();
+    } 
+    this.resetValue();
+  }
+
+  
+  resetValue() {
+    this.setState({ values: {} });
   }
 
 
@@ -72,9 +86,8 @@ export default class Form extends React.Component<Props, State> {
 
             {this.props.onCancel ?
               <div
-                className="button"
-                //@ts-ignore 
-                onClick={() => { this.props.onCancel() }}
+                className="button" 
+                onClick={() => this.onCancel()}
               >
                 Cancelar
               </div>

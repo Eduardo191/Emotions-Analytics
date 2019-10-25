@@ -41,6 +41,23 @@ export default class Field6Type extends React.Component<Props & FieldInterface, 
   }
 
 
+  componentDidUpdate = (prevProps: Props) => {
+
+    const value = this.props.value;
+
+    if (prevProps.value !== value) {
+      const defaultValue = this.props.defaultValue;
+      const key = this.props.keyName;
+      let stateValue = this.props.value;
+      if (value === undefined) {
+        stateValue = defaultValue;
+        this.props.onChange(defaultValue, key);
+      }
+      this.setState({ value: stateValue });
+    }
+  }
+
+
   renderOptions() {
     return (
       this.state.options.map(({ valueOption, label }) => {

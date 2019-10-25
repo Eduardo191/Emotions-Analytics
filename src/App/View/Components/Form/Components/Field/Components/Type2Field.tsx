@@ -27,7 +27,7 @@ export default class Field4Type extends React.Component<Props & FieldInterface> 
       <textarea
         placeholder={this.props.placeholder}
         required={this.props.required}
-        value={this.props.value} 
+        value={this.props.value ? this.props.value : ""} 
         onChange={(event) => this.onChange(event)}
         rows={5}
       />
