@@ -10,7 +10,7 @@ export class Test extends Controller {
         super(value);
     }
 
-    public static getForm() {    
+    public static getForm() {
         return Test.form;
     }
 }

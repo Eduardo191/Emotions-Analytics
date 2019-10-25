@@ -29,7 +29,7 @@ export default class Field4Type extends React.Component<Props & FieldInterface, 
 
 
   componentDidMount = async () => {
-    const options = await this.props.getOptions ? this.props.getOptions() : [];
+    const options = await this.props.getOptions();
     this.setState({ options });
   }
 

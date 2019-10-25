@@ -8,7 +8,6 @@ import { FieldInterface } from "../../../Interfaces";
 interface Props {
   keyName: string;
   onChange: Function;
-  getOptions: Function;
   value?: any;
   defaultValue: boolean;
 }
