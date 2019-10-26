@@ -1,16 +1,17 @@
 export interface OccurrenceInterface {
     Id?: number;
     Time: string;
+    TestId: number;
     Emoji?: string;
-    PeopleAppearence: {
-        Age: number;
-        Gender: string;
-        Glasses: boolean;
-    };
     Page: {
         Url: string;
         Title: string;
         Print: JSON;
+    };
+    PeopleAppearence: {
+        Age: number;
+        Gender: string;
+        Glasses: boolean;
     };
     Emotions: {
         Anger: number;

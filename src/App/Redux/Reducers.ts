@@ -1,18 +1,18 @@
 import {
-    CHANGE_AFFECTIVA_IS_LOADED,
+    CHANGE_TEST_GOING_ON,
 } from "./Types";
 import { combineReducers } from "redux";
 
 const INITIAL_STATE = {
-    affectivaIsLoaded: false,
+    testGoingOn: false,
 };
 
 const Reducers = (state = INITIAL_STATE, action: { type: string, payload: any }) => {
 
     switch (action.type) {
 
-        case CHANGE_AFFECTIVA_IS_LOADED:
-            return { ...state, affectivaIsLoaded: action.payload };
+        case CHANGE_TEST_GOING_ON:
+            return { ...state, testGoingOn: action.payload };
 
         default:
             return state;

@@ -1,10 +1,10 @@
 import {
-    CHANGE_AFFECTIVA_IS_LOADED,
+    CHANGE_TEST_GOING_ON,
 } from "./Types";
 
-export const changeAffectivaIsLoaded = (affectivaIsLoaded: boolean) => {
+export const changeTestGoingOn = (testGoingOn: boolean) => {
     return {
-        type: CHANGE_AFFECTIVA_IS_LOADED,
-        payload: affectivaIsLoaded,
+        type: CHANGE_TEST_GOING_ON,
+        payload: testGoingOn,
     }
 }

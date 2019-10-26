@@ -1,18 +1,34 @@
 import React from "react";
+
+//Components
 import Icon from "../Icon";
 import { ModalForm } from "../Form/Components/FormTypes/ModalForm";
-import { Test } from "../../../Controller";
+
+//Controllers
+import { Test, Occurrence } from "../../../Controller";
 import { TestInterface } from "../../../Controller/Test/interface";
+import { OccurrenceInterface } from "../../../Controller/Occurrence/interface";
+
+//Libraries
+import { Affectiva, capitalizeObjectKeys } from "../../../Logic/Library";
 import toastr from "toastr";
-import { Affectiva } from "../../../Logic/Library";
+
+//Redux
+import { connect } from "react-redux";
+import { ReducerState } from "../../../Redux/Interfaces";
+import { changeTestGoingOn } from "../../../Redux/Actions";
+
+interface ReduxState {
+  changeTestGoingOn: Function;
+}
+
+type Props = ReduxState;
 
 interface State {
   formMode: "open" | "close" | "loading";
 }
 
-interface Props { }
-
-export default class StartTestFixed extends React.Component<Props, State>{
+class StartTestFixed extends React.Component<Props, State>{
 
   constructor(props: Props) {
     super(props);
@@ -26,35 +42,11 @@ export default class StartTestFixed extends React.Component<Props, State>{
 
     this.setState({ formMode: "loading" })
     let test = new Test(values);
-    const testValue = await test.postValue();
+    const testValue: TestInterface = await test.postValue();
 
-    if (testValue) {
-   
-      const loadingTeoastr = toastr.info(
-        "Inicializando Affectiva", 
-        undefined, 
-        {
-          positionClass: "toast-bottom-left",
-          timeOut: undefined,
-        }
-      );
-      
-      Affectiva.onInitializeSuccess = () => {
-        console.log("Inicializado");
-      }
-
-      Affectiva.onImageResultsSuccess = (faces:any, image:any, timestamp:any) => {
-        console.log("faces ", faces);
-        console.log("image ", image);
-        console.log("timestamp ", timestamp);
-      }
-
-      Affectiva.start();
-      
-      // toastr.clear(loadingTeoastr);
-   
+    if (testValue.Id !== undefined) {
+      this.startAffectiva(testValue.Id);
     } else {
-   
       toastr.error(
         "Algo deu errado, tente novamente mais tarde",
         undefined,
@@ -63,9 +55,80 @@ export default class StartTestFixed extends React.Component<Props, State>{
           timeOut: 1500,
         }
       );
-
       this.setState({ formMode: "close" });
     }
+  }
+
+
+  startAffectiva(testId: number) {
+
+    const loadingTeoastr = toastr.info(
+      "Inicializando Affectiva...",
+      undefined,
+      {
+        positionClass: "toast-bottom-left",
+        timeOut: 100000000000000000000000,
+      }
+    );
+
+    Affectiva.onInitializeFailure = () => {
+      toastr.clear(loadingTeoastr);
+      toastr.error(
+        "A inicialização do algoritmo de coleta de emoções falhou, tente novamente mais tarde",
+        undefined,
+        {
+          positionClass: "toast-bottom-left",
+          timeOut: 1500,
+        }
+      );
+      this.setState({ formMode: "close" });
+    }
+
+    Affectiva.onWebcamConnectFailure = () => {
+      toastr.clear(loadingTeoastr);
+      toastr.error(
+        "Não foi possível conectar com a sua webcam, tente novamente mais tarde",
+        undefined,
+        {
+          positionClass: "toast-bottom-left",
+          timeOut: 1500,
+        }
+      );
+      this.setState({ formMode: "close" });
+    };
+
+    Affectiva.onImageResultsSuccess = (faces: any, image: any, timestamp: any) => {
+      
+      if (faces && Array.isArray(faces) && faces.length !== 0) {
+        
+        let { expressions, emotions, appearance, emojis } = faces[0];
+        const Expressions = capitalizeObjectKeys(expressions);
+        const Emotions = capitalizeObjectKeys(emotions);
+        const PeopleAppearence = capitalizeObjectKeys(appearance);
+        const Emoji = emojis.dominantEmoji;
+        const TestId = testId;
+        const Time = timestamp;
+
+        const occurrenceValue: OccurrenceInterface = {
+          Time,
+          TestId,
+          Emoji,
+          PeopleAppearence,
+          Emotions,
+          Expressions,
+          Page: {
+            Url: "url mocado",
+            Title: "title mocado",
+            Print: image,
+          },
+        }
+
+        let occurrence = new Occurrence(occurrenceValue);
+        occurrence.postValue();
+      }
+    }
+
+    Affectiva.start();
   }
 
 
@@ -85,17 +148,12 @@ export default class StartTestFixed extends React.Component<Props, State>{
 
     return (
       <div className="start_test">
-
         <div className="wrapper_button" onClick={() => this.openModal()}>
-
           <div className="icon">
             <Icon name="rocket" size="100%" color="#fff" />
           </div>
-
           <span>Iniciar Teste</span>
-
         </div>
-
         <ModalForm
           mode={this.state.formMode}
           onSubmit={(values: TestInterface) => this.onSubmit(values)}
@@ -107,3 +165,26 @@ export default class StartTestFixed extends React.Component<Props, State>{
     )
   }
 }
+
+
+/** EXEMPLO DE USO REDUX */
+
+const mapStateToProps = (state: ReducerState) => {
+
+  const {
+    testGoingOn,
+  } = state.Reducers;
+
+  return {
+    testGoingOn,
+  }
+}
+
+const mapDispatchToProps = {
+  changeTestGoingOn
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StartTestFixed);

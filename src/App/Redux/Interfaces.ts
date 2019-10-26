@@ -1,5 +1,5 @@
 export type ReducerState = {
     Reducers: {
-        affectivaIsLoaded: boolean;
+        testGoingOn: boolean;
     }
 }

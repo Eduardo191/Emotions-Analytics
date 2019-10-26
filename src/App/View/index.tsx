@@ -1,12 +1,7 @@
 import React from "react";
 
-//Redux
-import { connect } from "react-redux";
-import { ReducerState } from "../Redux/Interfaces";
-
 //Route
 import { withRouter, RouteComponentProps } from "react-router";
-import { changeAffectivaIsLoaded } from "../Redux/Actions";
 import Routes from "./Routes";
 
 //Data
@@ -18,12 +13,7 @@ import SidebarMenu from "./Components/SidebarMenu";
 import SidebarNew from "./Components/SidebarNew";
 import StartTestFixed from "./Components/StartTestFixed";
 
-interface ReduxState {
-  affectivaIsLoaded: boolean;
-  changeAffectivaIsLoaded: Function;
-}
-
-type Props = RouteComponentProps<{}> & ReduxState;
+type Props = RouteComponentProps<{}>;
 
 class App extends React.Component<Props> {
 
@@ -39,25 +29,4 @@ class App extends React.Component<Props> {
   }
 }
 
-
-/** EXEMPLO DE USO DO REDUX*/
-
-const mapStateToProps = (state: ReducerState) => {
-
-  const {
-    affectivaIsLoaded,
-  } = state.Reducers;
-
-  return {
-    affectivaIsLoaded,
-  }
-}
-
-const mapDispatchToProps = {
-  changeAffectivaIsLoaded
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(App));
+export default withRouter(App);

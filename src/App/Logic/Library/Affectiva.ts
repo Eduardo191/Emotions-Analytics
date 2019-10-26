@@ -31,7 +31,8 @@ export class Affectiva {
         //@ts-ignore
         const faceMode = window.affdex.FaceDetectorMode.SMALL_FACES;
         const nodeCanvasAffectiva = document.createElement("div");
-        nodeCanvasAffectiva.id = "nodeCanvasAffectiva";
+        nodeCanvasAffectiva.id = "nodeCanvasAffectiva";       
+        //nodeCanvasAffectiva.style = "diplay: none";
         document.body.appendChild(nodeCanvasAffectiva);
 
         //@ts-ignore
@@ -77,7 +78,7 @@ export class Affectiva {
 
         if (this.onGoing) {
 
-            this.detector.stop();
+            this.detector.reset();
             this.onGoing = false;
 
             if (this.onStop)
