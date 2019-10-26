@@ -1,7 +1,12 @@
 import React from "react";
 
+//Redux
+import { connect } from "react-redux";
+import { ReducerState } from "../Redux/Interfaces";
+
 //Route
 import { withRouter, RouteComponentProps } from "react-router";
+import { changeAffectivaIsLoaded } from "../Redux/Actions";
 import Routes from "./Routes";
 
 //Data
@@ -14,25 +19,54 @@ import SidebarNew from "./Components/SidebarNew";
 import StartTestFixed from "./Components/StartTestFixed";
 import Script from "./Components/Script/index";
 
-type Props = RouteComponentProps<{}>;
+interface ReduxState {
+  affectivaIsLoaded: boolean;
+  changeAffectivaIsLoaded: Function;
+}
+
+type Props = RouteComponentProps<{}> & ReduxState;
 
 class App extends React.Component<Props> {
 
-  componentDidMount = () => {
-
-  }
-
   render() {
+
     return (
+
       <div className="container">
+
         <SidebarNew data={DataSidebarNew} />
         <SidebarMenu data={DataSidebarMenu} />
         <StartTestFixed />
         <Routes />
-        <Script link="https://download.affectiva.com/js/3.2.1/affdex.js" />
+        <Script
+          link="https://download.affectiva.com/js/3.2.1/affdex.js"
+          onLoad={() => { this.props.changeAffectivaIsLoaded(true) }}
+        />
+
       </div>
     )
   }
 }
 
-export default withRouter(App);
+
+/** EXEMPLO DE USO DO REDUX*/
+
+const mapStateToProps = (state: ReducerState) => {
+
+  const {
+    affectivaIsLoaded,
+  } = state.Reducers;
+
+  return {
+    affectivaIsLoaded,
+  }
+}
+
+const mapDispatchToProps = {
+  changeAffectivaIsLoaded
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(App));
