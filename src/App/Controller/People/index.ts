@@ -8,7 +8,7 @@ export class People extends Controller {
     private static form = formData;
 
     constructor(value: PeopleInterface) {
-        super(value);
+        super(value, "people");
     }
 
 

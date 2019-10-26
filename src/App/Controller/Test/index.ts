@@ -7,7 +7,7 @@ export class Test extends Controller {
     private static form = formData;
 
     constructor(value: TestInterface) {
-        super(value);
+        super(value, "test");
     }
 
     public static getForm() {
