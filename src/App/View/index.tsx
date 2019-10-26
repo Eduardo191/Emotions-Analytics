@@ -12,12 +12,17 @@ import { DataSidebarMenu } from "../Data/SidebarMenu";
 import SidebarMenu from "./Components/SidebarMenu";
 import SidebarNew from "./Components/SidebarNew";
 import StartTestFixed from "./Components/StartTestFixed";
+import Script from "./Components/Script/index";
+
+//Logic
+import { onAffectiva } from "../Logic/Library";
 
 type Props = RouteComponentProps<{}>;
 
 class App extends React.Component<Props> {
-  
+
   componentDidMount = () => {
+
   }
 
   render() {
@@ -27,6 +32,8 @@ class App extends React.Component<Props> {
         <SidebarMenu data={DataSidebarMenu} />
         <StartTestFixed />
         <Routes />
+        <Script />
+        <button onClick={() => onAffectiva()}>Teste</button>
       </div>
     )
   }

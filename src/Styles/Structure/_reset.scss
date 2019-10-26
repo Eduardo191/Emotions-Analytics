@@ -82,6 +82,10 @@ button:active{
   background: transparent;
 }
 
+#affectiva{
+  display: none; 
+}
+
 /*Scroll bar*/
 ::-webkit-scrollbar {
   width: 8px;
@@ -91,3 +95,4 @@ button:active{
   background: $purple;
   border-radius: 30px;
 }
+
