@@ -17,7 +17,6 @@ import { DataSidebarMenu } from "../Data/SidebarMenu";
 import SidebarMenu from "./Components/SidebarMenu";
 import SidebarNew from "./Components/SidebarNew";
 import StartTestFixed from "./Components/StartTestFixed";
-import Script from "./Components/Script/index";
 
 interface ReduxState {
   affectivaIsLoaded: boolean;
@@ -29,20 +28,12 @@ type Props = RouteComponentProps<{}> & ReduxState;
 class App extends React.Component<Props> {
 
   render() {
-
     return (
-
       <div className="container">
-
         <SidebarNew data={DataSidebarNew} />
         <SidebarMenu data={DataSidebarMenu} />
         <StartTestFixed />
         <Routes />
-        <Script
-          link="https://download.affectiva.com/js/3.2.1/affdex.js"
-          onLoad={() => { this.props.changeAffectivaIsLoaded(true) }}
-        />
-
       </div>
     )
   }

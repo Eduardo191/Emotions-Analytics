@@ -12,7 +12,8 @@ export class Controller {
 
     public async postValue() {
         console.log("this.value ", this.value);
-        await delay(1000);
-        return true;
+        this.value.Id = 5;
+        await delay(300);
+        return this.value;
     }
 }

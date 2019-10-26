@@ -1,7 +1,7 @@
-import {delay} from "./delay";
-import {onAffectiva} from "./onAffectiva";
+import { delay } from "./delay";
+import { Affectiva } from "./Affectiva";
 
 export {
     delay,
-    onAffectiva
+    Affectiva
 }

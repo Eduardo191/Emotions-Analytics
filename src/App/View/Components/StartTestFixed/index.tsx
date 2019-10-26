@@ -2,6 +2,9 @@ import React from "react";
 import Icon from "../Icon";
 import { ModalForm } from "../Form/Components/FormTypes/ModalForm";
 import { Test } from "../../../Controller";
+import { TestInterface } from "../../../Controller/Test/interface";
+import toastr from "toastr";
+import { Affectiva } from "../../../Logic/Library";
 
 interface State {
   formMode: "open" | "close" | "loading";
@@ -19,14 +22,50 @@ export default class StartTestFixed extends React.Component<Props, State>{
   }
 
 
-  async onSubmit(values: any) {
+  async onSubmit(values: TestInterface) {
 
     this.setState({ formMode: "loading" })
+    let test = new Test(values);
+    const testValue = await test.postValue();
 
-    const testTypeId = values.test_test;
-    const personId = values.test_person;
+    if (testValue) {
+   
+      const loadingTeoastr = toastr.info(
+        "Inicializando Affectiva", 
+        undefined, 
+        {
+          positionClass: "toast-bottom-left",
+          timeOut: undefined,
+        }
+      );
+      
+      Affectiva.onInitializeSuccess = () => {
+        console.log("Inicializado");
+      }
 
-    this.setState({ formMode: "close" });
+      Affectiva.onImageResultsSuccess = (faces:any, image:any, timestamp:any) => {
+        console.log("faces ", faces);
+        console.log("image ", image);
+        console.log("timestamp ", timestamp);
+      }
+
+      Affectiva.start();
+      
+      // toastr.clear(loadingTeoastr);
+   
+    } else {
+   
+      toastr.error(
+        "Algo deu errado, tente novamente mais tarde",
+        undefined,
+        {
+          positionClass: "toast-bottom-left",
+          timeOut: 1500,
+        }
+      );
+
+      this.setState({ formMode: "close" });
+    }
   }
 
 
@@ -59,7 +98,7 @@ export default class StartTestFixed extends React.Component<Props, State>{
 
         <ModalForm
           mode={this.state.formMode}
-          onSubmit={(values: Object) => this.onSubmit(values)}
+          onSubmit={(values: TestInterface) => this.onSubmit(values)}
           onCancel={() => this.onCancel()}
           form={form}
           submitLabel="Iniciar"
