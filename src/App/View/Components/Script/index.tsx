@@ -1,18 +1,21 @@
 import React from "react";
 
-export default class Script extends React.Component {
+type Props = {
+    link: string;
+    onLoad?: Function;
+}
+export default class Script extends React.Component<Props> {
+
     componentDidMount = () => {
+
         const script = document.createElement("script");
-    
-        script.src = "https://download.affectiva.com/js/3.2.1/affdex.js";
+        script.src = this.props.link;
         script.async = true;
-    
+        script.addEventListener("load", () => this.props.onLoad ? this.props.onLoad() : null);
         document.body.appendChild(script);
     }
 
     render() {
-        return (
-            <div></div>
-        )
+        return null;
     }
 }

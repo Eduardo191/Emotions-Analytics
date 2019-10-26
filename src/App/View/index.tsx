@@ -14,9 +14,6 @@ import SidebarNew from "./Components/SidebarNew";
 import StartTestFixed from "./Components/StartTestFixed";
 import Script from "./Components/Script/index";
 
-//Logic
-import { onAffectiva } from "../Logic/Library";
-
 type Props = RouteComponentProps<{}>;
 
 class App extends React.Component<Props> {
@@ -32,8 +29,7 @@ class App extends React.Component<Props> {
         <SidebarMenu data={DataSidebarMenu} />
         <StartTestFixed />
         <Routes />
-        <Script />
-        <button onClick={() => onAffectiva()}>Teste</button>
+        <Script link="https://download.affectiva.com/js/3.2.1/affdex.js" />
       </div>
     )
   }
