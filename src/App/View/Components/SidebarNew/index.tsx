@@ -4,6 +4,7 @@ import { FieldInterface } from "../Form/Interfaces";
 import { RouteComponentProps } from "react-router-dom";
 import { ModalForm } from "../Form";
 import Icon from "../Icon";
+import toastr from "toastr";
 
 interface Option {
   title: string;
@@ -73,7 +74,7 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
 
 
   async onSubmit(values: Object) {
-    
+
     this.setState({ formMode: "loading" })
 
     const index = this.state.currentIndex;
@@ -81,9 +82,26 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
     const response = await postValues(values);
 
     if (response) {
-      alert("Salvo com sucesso!");
+
+      toastr.success(
+        "Salvo com sucesso!",
+        undefined,
+        {
+          positionClass: "toast-bottom-left",
+          timeOut: 1500,
+        }
+      );
+
     } else {
-      alert("Algo deu errado, tente novamente mais tarde.")
+
+      toastr.error(
+        "Algo deu errado, tente novamente mais tarde.",
+        undefined,
+        {
+          positionClass: "toast-bottom-left",
+          timeOut: 1500,
+        }
+      );
     }
 
     this.setState({ formMode: "close" });
