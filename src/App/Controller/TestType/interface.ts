@@ -3,5 +3,4 @@ export interface TestTypeInterface {
     Title: string;
     StartUrl: string;
     Objective: string;
-    HaveAbandonment: boolean;
 }

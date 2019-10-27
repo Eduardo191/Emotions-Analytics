@@ -22,11 +22,4 @@ export const formData: Array<FieldInterface> = [
     placeholder: "Objetivo do teste",
     required: true,
   },
-  {
-    typeId: 6, //Booleano
-    key: "HaveAbandonment",
-    name: "O teste pode ser abandonado?",
-    required: true,
-    defaultValue: true,
-  },
 ]

@@ -12,6 +12,7 @@ interface OptionMenu {
 
 interface Props {
   data: Array<OptionMenu>;
+  invisible?: boolean;
 }
 
 interface State {
@@ -117,7 +118,7 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
 
   render() {
     return (
-      <aside className={`${this.state.compressedClass} sidebar_menu`}>
+      <aside className={`${this.state.compressedClass} sidebar_menu ${this.props.invisible ? "invisible" : ""}`}>
         <nav>
           <ul>
             {this.renderList()}

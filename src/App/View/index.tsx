@@ -12,21 +12,47 @@ import { DataSidebarMenu } from "../Data/SidebarMenu";
 import SidebarMenu from "./Components/SidebarMenu";
 import SidebarNew from "./Components/SidebarNew";
 import StartTestFixed from "./Components/StartTestFixed";
+import FinishTestButton from "./Components/FinishTestButton";
 
-type Props = RouteComponentProps<{}>;
+//Redux
+import { connect } from "react-redux";
+import { ReducerState } from "../Redux/Interfaces";
+
+interface ReduxState {
+  testGoingOn: boolean;
+}
+
+type Props = RouteComponentProps<{}> & ReduxState;
 
 class App extends React.Component<Props> {
 
   render() {
+
+    const testGoingOn = this.props.testGoingOn;
+
     return (
       <div className="container">
-        <SidebarNew data={DataSidebarNew} />
-        <SidebarMenu data={DataSidebarMenu} />
-        <StartTestFixed />
+        <SidebarNew invisible={testGoingOn} data={DataSidebarNew} />
+        <SidebarMenu invisible={testGoingOn} data={DataSidebarMenu} />
+        <StartTestFixed invisible={testGoingOn} />
+        <FinishTestButton invisible={!testGoingOn} />
         <Routes />
       </div>
     )
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = (state: ReducerState) => {
+
+  const {
+    testGoingOn,
+  } = state.Reducers;
+
+  return {
+    testGoingOn,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+)(withRouter(App));
