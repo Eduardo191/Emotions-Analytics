@@ -15,7 +15,6 @@ interface Option {
 
 interface Props {
   data: Array<Option>;
-  invisible?: boolean;
 }
 
 interface State {
@@ -124,7 +123,7 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
     const currentForm = this.props.data[index].form;
 
     return (
-      <aside className={`sidebar_new ${this.state.sidebarMode ? "" : "close"} ${this.props.invisible ? "invisible" : ""}`}>
+      <aside className={`sidebar_new ${this.state.sidebarMode ? "" : "close"}`}>
         <div className="menu_icon" onClick={() => this.toggleSidebar()}>
           <Icon name="add" size="%100" color="#ffffff" />
         </div>

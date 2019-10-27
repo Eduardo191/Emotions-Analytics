@@ -23,11 +23,7 @@ interface ReduxState {
   testGoingOn: boolean;
 }
 
-interface OwnProps {
-  invisible?: boolean;
-}
-
-type Props = ReduxState & OwnProps;
+type Props = ReduxState;
 
 interface State {
   formMode: "open" | "close" | "loading";
@@ -160,7 +156,7 @@ class StartTestFixed extends React.Component<Props, State>{
     const form = Test.getForm();
 
     return (
-      <div className={`start_test ${this.props.invisible ? "invisible" : ""}`}>
+      <div className={"start_test"}>
         <div className="wrapper_button" onClick={() => this.openModal()}>
           <div className="icon">
             <Icon name="rocket" size="100%" color="#fff" />

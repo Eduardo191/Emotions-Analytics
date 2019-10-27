@@ -12,7 +12,7 @@ interface ReduxState {
 }
 
 interface OwnProps {
-  invisible?: boolean;
+  visible?: boolean;
 }
 
 type Props = ReduxState & OwnProps;
@@ -29,7 +29,7 @@ class FinishTestButton extends React.Component<Props, State>{
 
   render() {
     return (
-      <section className={`testButtons ${this.props.invisible ? "invisible" : ""}`}>
+      <section className={`testButtons ${this.props.visible ? "" : "invisible"}`}>
         <div onClick={() => this.onFinish()} className="button">FINALIZAR</div>
       </section>
     )

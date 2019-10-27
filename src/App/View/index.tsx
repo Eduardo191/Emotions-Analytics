@@ -32,11 +32,15 @@ class App extends React.Component<Props> {
 
     return (
       <div className="container">
-        <SidebarNew invisible={testGoingOn} data={DataSidebarNew} />
-        <SidebarMenu invisible={testGoingOn} data={DataSidebarMenu} />
-        <StartTestFixed invisible={testGoingOn} />
-        <FinishTestButton invisible={!testGoingOn} />
-        <Routes />
+
+        <div className={`${this.props.testGoingOn ? "invisible" : ""}`}>
+          <SidebarNew data={DataSidebarNew} />
+          <SidebarMenu data={DataSidebarMenu} />
+          <StartTestFixed />
+          <Routes />
+        </div>
+
+        <FinishTestButton visible={testGoingOn} />
       </div>
     )
   }
