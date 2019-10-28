@@ -1,7 +1,9 @@
 export class Affectiva {
 
     private static onGoing = false;
+    private static startDate: Date | false = false;
     private static detector: any;
+    private static firstTime: boolean = true;
 
     //Hooks
     static onInitializeSuccess: Function;
@@ -15,25 +17,41 @@ export class Affectiva {
 
         if (!this.onGoing) {
 
-            const script = document.createElement("script");
-            script.src = "https://download.affectiva.com/js/3.2.1/affdex.js";
-            script.async = true;
-            script.addEventListener("load", () => this.startAffectiva());
-            document.body.appendChild(script);
+            if (this.firstTime) {
+
+                const script = document.createElement("script");
+                script.src = "https://download.affectiva.com/js/3.2.1/affdex.js";
+                script.async = true;
+                script.addEventListener("load", () => this.startAffectiva());
+                document.body.appendChild(script);
+
+            } else {
+                this.startAffectiva();
+            }
         }
     }
 
 
     private static startAffectiva() {
 
+        let nodeCanvasAffectiva;
+
+        if (this.firstTime) {
+
+            nodeCanvasAffectiva = document.createElement("div");
+            nodeCanvasAffectiva.id = "nodeCanvasAffectiva";
+            nodeCanvasAffectiva.style.display = "none";
+            document.body.appendChild(nodeCanvasAffectiva);
+            this.firstTime = false;
+
+        } else {
+            nodeCanvasAffectiva = document.getElementById("nodeCanvasAffectiva");
+        }
+
         const width = 640;
         const height = 480;
         //@ts-ignore
         const faceMode = window.affdex.FaceDetectorMode.SMALL_FACES;
-        const nodeCanvasAffectiva = document.createElement("div");
-        nodeCanvasAffectiva.id = "nodeCanvasAffectiva";       
-        //nodeCanvasAffectiva.style = "diplay: none";
-        document.body.appendChild(nodeCanvasAffectiva);
 
         //@ts-ignore
         const detector = new window.affdex.CameraDetector(nodeCanvasAffectiva, width, height, faceMode);
@@ -63,9 +81,19 @@ export class Affectiva {
                 this.onWebcamConnectFailure();
         });
 
-        this.detector.addEventListener("onImageResultsSuccess", (faces: any, image: any, timestamp: any) => {
-            if (this.onImageResultsSuccess) {
-                this.onImageResultsSuccess(faces, image, timestamp);
+        this.detector.addEventListener("onImageResultsSuccess", (faces: any, image: any) => {
+            
+            if (this.onGoing) {
+
+                if (!this.startDate)
+                    this.startDate = new Date();
+    
+                const currentDate = new Date();
+                //@ts-ignore
+                const timestamp = Math.abs(this.startDate - currentDate) / 1000;
+    
+                if (this.onImageResultsSuccess)
+                    this.onImageResultsSuccess(faces, image, timestamp);
             }
         });
 
@@ -78,8 +106,9 @@ export class Affectiva {
 
         if (this.onGoing) {
 
-            this.detector.reset();
+            this.startDate = false;
             this.onGoing = false;
+            this.detector.stop();
 
             if (this.onStop)
                 this.onStop();

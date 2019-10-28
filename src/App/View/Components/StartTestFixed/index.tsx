@@ -20,6 +20,7 @@ import { changeTestGoingOn } from "../../../Redux/Actions";
 
 interface ReduxState {
   changeTestGoingOn: Function;
+  testGoingOn: boolean;
 }
 
 type Props = ReduxState;
@@ -63,11 +64,11 @@ class StartTestFixed extends React.Component<Props, State>{
   startAffectiva(testId: number) {
 
     const loadingTeoastr = toastr.info(
-      "Inicializando Affectiva...",
+      "Inicializando Teste...",
       undefined,
       {
         positionClass: "toast-bottom-left",
-        timeOut: 100000000000000000000000,
+        timeOut: 1000000000,
       }
     );
 
@@ -97,10 +98,18 @@ class StartTestFixed extends React.Component<Props, State>{
       this.setState({ formMode: "close" });
     };
 
+    Affectiva.onInitializeSuccess = () => {
+      if (!this.props.testGoingOn) {
+        this.props.changeTestGoingOn(true);
+        toastr.clear(loadingTeoastr);
+        this.setState({ formMode: "close" });
+      }
+    }
+
     Affectiva.onImageResultsSuccess = (faces: any, image: any, timestamp: any) => {
-      
+
       if (faces && Array.isArray(faces) && faces.length !== 0) {
-        
+
         let { expressions, emotions, appearance, emojis } = faces[0];
         const Expressions = capitalizeObjectKeys(expressions);
         const Emotions = capitalizeObjectKeys(emotions);
@@ -147,7 +156,7 @@ class StartTestFixed extends React.Component<Props, State>{
     const form = Test.getForm();
 
     return (
-      <div className="start_test">
+      <div className={"start_test"}>
         <div className="wrapper_button" onClick={() => this.openModal()}>
           <div className="icon">
             <Icon name="rocket" size="100%" color="#fff" />
@@ -165,9 +174,6 @@ class StartTestFixed extends React.Component<Props, State>{
     )
   }
 }
-
-
-/** EXEMPLO DE USO REDUX */
 
 const mapStateToProps = (state: ReducerState) => {
 

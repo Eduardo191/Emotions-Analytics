@@ -76,7 +76,6 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
   async onSubmit(values: Object) {
 
     this.setState({ formMode: "loading" })
-
     const index = this.state.currentIndex;
     let postValues = this.props.data[index].asyncPost;
     const response = await postValues(values);
@@ -119,20 +118,18 @@ class SidebarNew extends React.Component<RouteComponentProps<{}> & Props, State>
 
 
   render() {
+
     const index = this.state.currentIndex;
     const currentForm = this.props.data[index].form;
 
     return (
       <aside className={`sidebar_new ${this.state.sidebarMode ? "" : "close"}`}>
-
         <div className="menu_icon" onClick={() => this.toggleSidebar()}>
           <Icon name="add" size="%100" color="#ffffff" />
         </div>
-
         <ul className="options">
           {this.renderList()}
         </ul>
-
         <ModalForm
           mode={this.state.formMode}
           onSubmit={(values: Object) => this.onSubmit(values)}
