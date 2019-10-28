@@ -6,7 +6,6 @@ export interface OccurrenceInterface {
     Page: {
         Url: string;
         Title: string;
-        Print: JSON;
     };
     PeopleAppearence: {
         Age: number;

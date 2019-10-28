@@ -18,9 +18,13 @@ import FinishTestButton from "./Components/FinishTestButton";
 //Redux
 import { connect } from "react-redux";
 import { ReducerState } from "../Redux/Interfaces";
+import { changeCurrentTitle, changeCurrentUrl } from "../Redux/Actions";
 
 interface ReduxState {
   testGoingOn: boolean;
+  currentUrl: string;
+  changeCurrentUrl: Function;
+  changeCurrentTitle: Function;
 }
 
 type Props = RouteComponentProps<{}> & ReduxState;
@@ -29,19 +33,33 @@ class App extends React.Component<Props> {
 
   render() {
 
-    const testGoingOn = this.props.testGoingOn;
+    const {
+      testGoingOn,
+      currentUrl,
+      changeCurrentTitle,
+      changeCurrentUrl,
+    } = this.props;
 
     return (
       <div className="container">
 
-        <div className={`${this.props.testGoingOn ? "invisible" : ""}`}>
+        <div className={`${testGoingOn ? "invisible" : ""}`}>
           <SidebarNew data={DataSidebarNew} />
           <SidebarMenu data={DataSidebarMenu} />
           <StartTestFixed />
           <Routes />
         </div>
 
-        <FinishTestButton visible={testGoingOn} />
+        <div className={`${testGoingOn ? "" : "invisible"}`}>
+          <FinishTestButton />
+          {testGoingOn ?
+            <Iframe
+              startUrl={currentUrl}
+              onChangeTitle={(title: string) => changeCurrentTitle(title)}
+              onChangeUrl={(url: string) => changeCurrentUrl(url)}
+            />
+          : null}
+        </div>
       </div>
     )
   }
@@ -51,13 +69,21 @@ const mapStateToProps = (state: ReducerState) => {
 
   const {
     testGoingOn,
+    currentUrl,
   } = state.Reducers;
 
   return {
     testGoingOn,
+    currentUrl,
   }
 }
 
+const mapDispatchToProps = {
+  changeCurrentUrl,
+  changeCurrentTitle,
+};
+
 export default connect(
   mapStateToProps,
+  mapDispatchToProps
 )(withRouter(App));

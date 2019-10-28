@@ -5,7 +5,7 @@ import Icon from "../Icon";
 import { ModalForm } from "../Form/Components/FormTypes/ModalForm";
 
 //Controllers
-import { Test, Occurrence } from "../../../Controller";
+import { Test, Occurrence, TestType } from "../../../Controller";
 import { TestInterface } from "../../../Controller/Test/interface";
 import { OccurrenceInterface } from "../../../Controller/Occurrence/interface";
 
@@ -16,11 +16,15 @@ import toastr from "toastr";
 //Redux
 import { connect } from "react-redux";
 import { ReducerState } from "../../../Redux/Interfaces";
-import { changeTestGoingOn } from "../../../Redux/Actions";
+import { changeTestGoingOn, changeCurrentUrl } from "../../../Redux/Actions";
+import { TestTypeInterface } from "../../../Controller/TestType/interface";
 
 interface ReduxState {
-  changeTestGoingOn: Function;
   testGoingOn: boolean;
+  currentUrl: string;
+  currentTitle: string;
+  changeTestGoingOn: Function;
+  changeCurrentUrl: Function;
 }
 
 type Props = ReduxState;
@@ -41,11 +45,13 @@ class StartTestFixed extends React.Component<Props, State>{
 
   async onSubmit(values: TestInterface) {
 
-    this.setState({ formMode: "loading" })
+    this.setState({ formMode: "loading" });
     let test = new Test(values);
     const testValue: TestInterface = await test.postValue();
+    const testType: TestTypeInterface = await TestType.getTestTypeById(values.TestTypeId);
 
-    if (testValue.Id !== undefined) {
+    if (testValue.Id !== undefined && testType.StartUrl !== undefined) {
+      this.props.changeCurrentUrl(testType.StartUrl);
       this.startAffectiva(testValue.Id);
     } else {
       toastr.error(
@@ -126,9 +132,8 @@ class StartTestFixed extends React.Component<Props, State>{
           Emotions,
           Expressions,
           Page: {
-            Url: "url mocado",
-            Title: "title mocado",
-            Print: image,
+            Url: this.props.currentUrl,
+            Title: this.props.currentTitle,
           },
         }
 
@@ -179,15 +184,20 @@ const mapStateToProps = (state: ReducerState) => {
 
   const {
     testGoingOn,
+    currentUrl,
+    currentTitle,
   } = state.Reducers;
 
   return {
     testGoingOn,
+    currentUrl,
+    currentTitle,
   }
 }
 
 const mapDispatchToProps = {
-  changeTestGoingOn
+  changeTestGoingOn,
+  changeCurrentUrl,
 };
 
 export default connect(
