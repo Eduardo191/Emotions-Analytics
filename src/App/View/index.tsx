@@ -12,6 +12,7 @@ import { DataSidebarMenu } from "../Data/SidebarMenu";
 import SidebarMenu from "./Components/SidebarMenu";
 import SidebarNew from "./Components/SidebarNew";
 import StartTestFixed from "./Components/StartTestFixed";
+import Iframe from "./Components/Iframe";
 
 type Props = RouteComponentProps<{}>;
 
@@ -24,6 +25,7 @@ class App extends React.Component<Props> {
         <SidebarMenu data={DataSidebarMenu} />
         <StartTestFixed />
         <Routes />
+        <Iframe />
       </div>
     )
   }
