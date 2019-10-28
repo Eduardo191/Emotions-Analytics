@@ -6,7 +6,7 @@ import Home from "./Scenes/Home";
 import Tests from "./Scenes/Tests";
 import Persons from "./Scenes/Persons";
 import TestGoingOn from "./Scenes/TestGoingOn";
-import Test from "./Scenes/Tests/ChildScene/Test";
+import Test from "./Scenes/Tests/Childs/Test";
 
 export default class Routes extends React.Component {
   render() {
