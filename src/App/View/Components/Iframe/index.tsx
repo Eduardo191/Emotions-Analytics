@@ -13,7 +13,7 @@ export default class Iframe extends React.Component<Props> {
     const iframe: any = document.getElementById("iframe-test");
     const title = iframe.title;
     const url = iframe.src;
-    
+
     if (this.props.onChangeTitle)
       this.props.onChangeTitle(title);
 
@@ -21,11 +21,9 @@ export default class Iframe extends React.Component<Props> {
       this.props.onChangeUrl(url);
   }
 
-
   render() {
-
     return (
-      <iframe is="x-frame-bypass" id="iframe-test" onLoad={this.onChangeIframe} src={this.props.startUrl} />
+      <iframe id="iframe-test" onLoad={() => this.onChangeIframe()} src={this.props.startUrl} />
     )
   }
 }

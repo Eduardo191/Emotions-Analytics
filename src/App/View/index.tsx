@@ -25,11 +25,6 @@ class App extends React.Component<Props> {
         <SidebarMenu data={DataSidebarMenu} />
         <StartTestFixed />
         <Routes />
-        <Iframe
-          startUrl="https://www.npmjs.com/package/toastr"
-          onChangeTitle={(title: string) => console.log("title ", title)}
-          onChangeUrl={(url: string) => console.log("url ", url)}
-        />
       </div>
     )
   }
