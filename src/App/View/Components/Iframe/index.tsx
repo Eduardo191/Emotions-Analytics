@@ -1,23 +1,31 @@
 import React from "react";
 
-export default class Iframe extends React.Component {
+type Props = {
+  onChangeTitle?: Function;
+  onChangeUrl?: Function;
+  startUrl: string;
+}
 
-  onChangeURL(){
-    //@ts-ignore
-    const URL = document.getElementsByTagName('iframe')[0];
-    console.log(URL);
-  }  
-  //@ts-ignore
-  onChangeTitle(event){
-    const title = document.getElementsByTagName('iframe')[0].title;
-    console.log(typeof event.value);
+export default class Iframe extends React.Component<Props> {
+
+  onChangeIframe() {
+
+    const iframe: any = document.getElementById("iframe-test");
+    const title = iframe.title;
+    const url = iframe.src;
+    
+    if (this.props.onChangeTitle)
+      this.props.onChangeTitle(title);
+
+    if (this.props.onChangeUrl)
+      this.props.onChangeUrl(url);
   }
 
+
   render() {
+
     return (
-      <div> 
-        <iframe is="x-frame-bypass" id="teste" onLoad={this.onChangeURL} src="https://www.npmjs.com/" width="100%"></iframe>
-      </div>
+      <iframe is="x-frame-bypass" id="iframe-test" onLoad={this.onChangeIframe} src={this.props.startUrl} />
     )
   }
 }
