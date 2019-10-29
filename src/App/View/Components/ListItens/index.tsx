@@ -22,9 +22,6 @@ interface State {
 class ListItens extends React.Component<Props, State>{
 
   renderList() {
-
-    console.log(this.props.data);
-
     return (
       this.props.data.map((value) => (
         <Link to={value.link}>
