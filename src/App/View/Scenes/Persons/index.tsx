@@ -1,5 +1,9 @@
 import React from "react";
+
+//Components
 import ListItens from "../../Components/ListItens";
+
+//Controllers
 import { itemOfListItensComponent } from "../../Components/ListItens";
 import { People } from "../../../Controller";
 
@@ -23,11 +27,11 @@ export default class Persons extends React.Component<Props, State> {
     const peoples = await People.getPeoples();
     let dataList: Array<itemOfListItensComponent> = [];
 
-    peoples.map((value) => {
+    peoples.map((people) => {
       dataList.push({
-        title: value.name,
-        subtitle: value.email,
-        link: `pessoas/${value.id}`,
+        title: people.name,
+        subtitle: people.email,
+        link: `pessoas/${people.id}`,
       })
     });
 

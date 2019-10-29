@@ -20,6 +20,17 @@ export class People extends Controller {
         return People.form;
     }
 
+    public static async getPeopleById(id: number) {
+        delay(500);
+        const people: PeopleInterface = {
+            id: 1,
+            name: "Nome 1",
+            email: "Email@email.com",
+            birthday: "03-06-1998",
+        };
+        return people;
+    }
+
     public static async getPeoples() {
         delay(500);
         const peoples: Array<PeopleInterface> = [
@@ -27,37 +38,37 @@ export class People extends Controller {
                 id: 1,
                 name: "Nome 1",
                 email: "Email@email.com",
-                birthday: "03-06-1998",   
+                birthday: "03-06-1998",
             },
             {
                 id: 2,
                 name: "Nome 2",
                 email: "Email@email.com",
-                birthday: "03-06-1998",   
+                birthday: "03-06-1998",
             },
             {
                 id: 3,
                 name: "Nome 3",
                 email: "Email@email.com",
-                birthday: "03-06-1998",   
+                birthday: "03-06-1998",
             },
             {
                 id: 4,
                 name: "Nome 4",
                 email: "Email@email.com",
-                birthday: "03-06-1998",   
+                birthday: "03-06-1998",
             },
             {
                 id: 5,
                 name: "Nome 5",
                 email: "Email@email.com",
-                birthday: "03-06-1998",   
+                birthday: "03-06-1998",
             },
             {
                 id: 6,
                 name: "Nome 6",
                 email: "Email@email.com",
-                birthday: "03-06-1998",   
+                birthday: "03-06-1998",
             },
         ];
         return peoples;
