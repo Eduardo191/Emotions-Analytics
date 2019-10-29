@@ -36,4 +36,34 @@ export class Test extends Controller {
         ];
         return tests;
     }
+
+    public static async getTestById(id: number) {
+        delay(500);
+        const test: TestInterface = {
+            id: 1,
+            test_type_id: 1,
+            people_id: 2,
+        };
+        return test;
+    }
+
+    public static async getTestByPeopleId(peopleId: number) {
+        delay(500);
+        const test: TestInterface = {
+            id: 1,
+            test_type_id: 1,
+            people_id: 2,
+        };
+        return test;
+    }
+
+    public static async getTestByTestTypeId(testTypeId: number) {
+        delay(500);
+        const test: TestInterface = {
+            id: 1,
+            test_type_id: 1,
+            people_id: 2,
+        };
+        return test;
+    }
 }
