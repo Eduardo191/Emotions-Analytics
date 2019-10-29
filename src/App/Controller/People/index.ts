@@ -8,9 +8,8 @@ export class People extends Controller {
     private static form = formData;
 
     constructor(value: PeopleInterface) {
-        super(value, "people");
+        super(value, "/people");
     }
-
 
     public static async getOptions() {
         delay(1000);

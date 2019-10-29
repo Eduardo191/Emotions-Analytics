@@ -20,6 +20,11 @@ import { connect } from "react-redux";
 import { ReducerState } from "../Redux/Interfaces";
 import { changeCurrentTitle, changeCurrentUrl } from "../Redux/Actions";
 
+//Axios
+import axios from "axios";
+axios.defaults.baseURL = 'http://backend-prod2.us-east-1.elasticbeanstalk.com';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
 interface ReduxState {
   testGoingOn: boolean;
   currentUrl: string;

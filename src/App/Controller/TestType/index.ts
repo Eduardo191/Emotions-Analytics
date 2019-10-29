@@ -23,10 +23,10 @@ export class TestType extends Controller {
     public static async getTestTypeById(id: number) {
         delay(1000);
         const testType: TestTypeInterface = {
-            Id: 1,
-            Title: "Sou um titulo",
-            StartUrl: "https://www.youtube.com/watch?v=HVrmuR6xGc0",
-            Objective: "Sou um objetivo",
+            id: 1,
+            title: "Sou um titulo",
+            start_url: "https://www.youtube.com/watch?v=HVrmuR6xGc0",
+            objective: "Sou um objetivo",
         }
         return testType;
     }
