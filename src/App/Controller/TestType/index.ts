@@ -2,6 +2,7 @@ import { Controller } from "../Controller";
 import { TestTypeInterface } from "./interface";
 import { formData } from "./formData";
 import { delay } from "../../Logic/Library";
+import Axios from "axios";
 
 export class TestType extends Controller {
 
@@ -28,11 +29,24 @@ export class TestType extends Controller {
             start_url: "https://www.youtube.com/watch?v=HVrmuR6xGc0",
             objective: "Sou um objetivo",
         }
+        /*
+        const testType: TestTypeInterface = await Axios.get(`/test_type/${id}`).then((response) => {
+            return response.data;
+        });
+        */ 
+        return testType;
+    }
+
+    public static async editTestTypeById(id: number, value: TestTypeInterface) {
+        delay(500);
+        const testType: TestTypeInterface = await Axios.patch(`/test_type/${id}`, value).then((response) => {
+            return response.data;
+        });
         return testType;
     }
 
     public static async getTestTypes() {
-        delay(1000);
+        delay(500);
         const testType: Array<TestTypeInterface> = [
             {
                 id: 1,
@@ -65,6 +79,11 @@ export class TestType extends Controller {
                 objective: "Sou um objetivo",
             },
         ]
+        /*
+        const testType: Array<TestTypeInterface> = await Axios.get('/test_type').then((response) => {
+            return response.data;
+        });
+        */
         return testType;
     }
 }

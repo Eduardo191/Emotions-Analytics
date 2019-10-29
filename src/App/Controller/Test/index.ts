@@ -2,6 +2,7 @@ import { Controller } from "../Controller";
 import { TestInterface } from "./interface";
 import { formData } from "./formData";
 import { delay } from "../../Logic/Library";
+import Axios from "axios";
 
 export class Test extends Controller {
 
@@ -17,53 +18,33 @@ export class Test extends Controller {
 
     public static async getTests() {
         delay(500);
-        const tests: Array<TestInterface> = [
-            {
-                id: 1,
-                test_type_id: 1,
-                people_id: 2,
-            },
-            {
-                id: 1,
-                test_type_id: 1,
-                people_id: 2,
-            },
-            {
-                id: 1,
-                test_type_id: 1,
-                people_id: 2,
-            },
-        ];
+        const tests: Array<TestInterface> = await Axios.get('/tests').then((response) => {
+            return response.data;
+        });
         return tests;
     }
 
     public static async getTestById(id: number) {
         delay(500);
-        const test: TestInterface = {
-            id: 1,
-            test_type_id: 1,
-            people_id: 2,
-        };
+        const test: TestInterface = await Axios.get(`/tests/${id}`).then((response) => {
+            return response.data;
+        }); 
         return test;
     }
 
     public static async getTestByPeopleId(peopleId: number) {
         delay(500);
-        const test: TestInterface = {
-            id: 1,
-            test_type_id: 1,
-            people_id: 2,
-        };
+        const test: TestInterface = await Axios.get(`/tests/${peopleId}`).then((response) => {
+            return response.data;
+        }); 
         return test;
     }
 
     public static async getTestByTestTypeId(testTypeId: number) {
         delay(500);
-        const test: TestInterface = {
-            id: 1,
-            test_type_id: 1,
-            people_id: 2,
-        };
+        const test: TestInterface = await Axios.get(`/tests/${testTypeId}`).then((response) => {
+            return response.data;
+        }); 
         return test;
     }
 }
