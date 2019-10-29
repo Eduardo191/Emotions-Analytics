@@ -1,6 +1,6 @@
 export interface TestTypeInterface {
-    Id?: number;
-    Title: string;
-    StartUrl: string;
-    Objective: string;
+    id?: number;
+    title: string;
+    start_url: string;
+    objective: string;
 }

@@ -48,11 +48,11 @@ class StartTestFixed extends React.Component<Props, State>{
     this.setState({ formMode: "loading" });
     let test = new Test(values);
     const testValue: TestInterface = await test.postValue();
-    const testType: TestTypeInterface = await TestType.getTestTypeById(values.TestTypeId);
+    const testType: TestTypeInterface = await TestType.getTestTypeById(values.test_type_id);
 
-    if (testValue.Id !== undefined && testType.StartUrl !== undefined) {
-      this.props.changeCurrentUrl(testType.StartUrl);
-      this.startAffectiva(testValue.Id);
+    if (testValue.id !== undefined && testType.start_url !== undefined) {
+      this.props.changeCurrentUrl(testType.start_url);
+      this.startAffectiva(testValue.id);
     } else {
       toastr.error(
         "Algo deu errado, tente novamente mais tarde",

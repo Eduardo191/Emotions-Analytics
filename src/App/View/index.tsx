@@ -20,6 +20,12 @@ import { connect } from "react-redux";
 import { ReducerState } from "../Redux/Interfaces";
 import { changeCurrentTitle, changeCurrentUrl } from "../Redux/Actions";
 
+//Axios
+import Axios from "axios";
+Axios.defaults.baseURL = 'http://backend-prod2.us-east-1.elasticbeanstalk.com';
+Axios.defaults.headers.common['Content-Type'] = 'application/json';
+Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+
 interface ReduxState {
   testGoingOn: boolean;
   currentUrl: string;
@@ -58,7 +64,7 @@ class App extends React.Component<Props> {
               onChangeTitle={(title: string) => changeCurrentTitle(title)}
               onChangeUrl={(url: string) => changeCurrentUrl(url)}
             />
-          : null}
+            : null}
         </div>
       </div>
     )

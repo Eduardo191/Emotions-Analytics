@@ -13,9 +13,7 @@ export default class Routes extends React.Component {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/testes" component={Tests} >
-          <Route path="/testes/:testId" component={Test} />
-        </Route>
+        <Route path="/testes" component={Tests} />
         <Route path="/pessoas" component={Persons} />
         <Route path="/testando" component={TestGoingOn} />
       </Switch>

@@ -1,7 +1,6 @@
 export interface PeopleInterface {
-    Id?: number;
-    Name: string;
-    Email: string;
-    Birthday: string;
-    Consent?: JSON;
+    id?: number;
+    name: string;
+    email: string;
+    birthday: string;
 }
