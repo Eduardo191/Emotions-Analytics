@@ -1,4 +1,5 @@
 import { delay } from "../Logic/Library";
+import Axios from "axios";
 
 export class Controller {
 
@@ -11,8 +12,12 @@ export class Controller {
     }
 
     public async postValue() {
-        console.log("this.value ", this.value);
-        this.value.Id = 5;
+
+        await Axios.post(this.endPoint, this.value)
+        .then((response) => {
+            console.log(response);
+        });
+        
         await delay(300);
         return this.value;
     }
