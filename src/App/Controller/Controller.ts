@@ -13,12 +13,12 @@ export class Controller {
 
     public async postValue() {
 
+        console.log(this.value);
         await Axios.post(this.endPoint, this.value)
         .then((response) => {
             console.log(response);
         });
         
-        await delay(300);
         return this.value;
     }
 }
