@@ -1,7 +1,6 @@
 import { Controller } from "../Controller";
 import { PeopleInterface } from "./interface";
 import { formData } from "./formData";
-import { delay } from "../../Logic/Library";
 import Axios from "axios";
 
 export class People extends Controller {

@@ -16,7 +16,8 @@ export class TestType extends Controller {
     }
 
     public static async getOptions() {
-        const testType: Array<TestTypeInterface> = await Axios.get('/people').then((response) => {
+
+        const testType: Array<TestTypeInterface> = await Axios.get('/test_type').then((response) => {
             return response.data;
         });
 
