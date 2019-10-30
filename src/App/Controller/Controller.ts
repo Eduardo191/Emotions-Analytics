@@ -11,18 +11,10 @@ export class Controller {
     }
 
     public async postValue() {
-
-        console.log("this.value ", this.value);
-
         const retry = await Axios.post(this.endPoint, this.value)
-        .then((response) => {
-            console.log("response ", response);
-            return response.data;
-        })
-        .catch((error) => {
-            console.log("error ", error);
-        });
-        
+            .then((response) => {
+                return response.data;
+            })
         return retry;
     }
 }

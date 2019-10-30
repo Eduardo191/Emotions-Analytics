@@ -5,7 +5,6 @@ import { TestTypeInterface } from "../../../Controller/TestType/interface";
 import { PeopleInterface } from "../../../Controller/People/interface";
 import moment from "moment";
 import { Link } from "react-router-dom";
-//@ts-ignore
 import AverageGraph from "../../Components/AverageGraph/index";
 
 interface OwnProps { }
