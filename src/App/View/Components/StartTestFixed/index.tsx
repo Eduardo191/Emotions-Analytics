@@ -117,23 +117,55 @@ class StartTestFixed extends React.Component<Props, State>{
       if (faces && Array.isArray(faces) && faces.length !== 0) {
 
         let { expressions, emotions, appearance, emojis } = faces[0];
-        const Expressions = capitalizeObjectKeys(expressions);
-        const Emotions = capitalizeObjectKeys(emotions);
-        const PeopleAppearence = capitalizeObjectKeys(appearance);
         const Emoji = emojis.dominantEmoji;
         const TestId = testId;
         const Time = timestamp;
 
         const occurrenceValue: OccurrenceInterface = {
-          Time,
-          TestId,
-          Emoji,
-          PeopleAppearence,
-          Emotions,
-          Expressions,
-          Page: {
-            Url: this.props.currentUrl,
-            Title: this.props.currentTitle,
+          time: Time,
+          test_id: TestId,
+          emoji: Emoji,
+          people_appearance: {
+            age: appearance.age,
+            gender: appearance.gender,
+            glasses: appearance.glasses,
+          },
+          emotion: {
+            anger: emotions.anger,
+            contempt: emotions.contempt,
+            disgusted: emotions.disgusted,
+            fear: emotions.fear,
+            joy: emotions.joy,
+            sadness: emotions.sadness,
+            valence: emotions.valence,
+            engagement: emotions.engagement,
+          },
+          expression: {
+            attention: expressions.attention,
+            brow_furrow: expressions.browFurrow,
+            brow_raise: expressions.browRaise,
+            cheek_raise: expressions.cheekRaise,
+            chin_raise: expressions.chinRaise,
+            dimpler: expressions.dimpler,
+            eye_closure: expressions.eyeClosure,
+            eye_widen: expressions.eyeWiden,
+            inner_brow_raise: expressions.innerBrowRaise,
+            jaw_drop: expressions.jawDrop,
+            lid_tighten: expressions.lidTighten,
+            lip_corner_depressor: expressions.lipCorner,
+            lip_press: expressions.lipPress,
+            lip_pucker: expressions.lipPucker,
+            lip_stretch: expressions.lipStrech,
+            lip_suck: expressions.lipSuck,
+            mouth_open: expressions.mouthOpen,
+            nose_wrinkle: expressions.noseWrinkle,
+            smile: expressions.smile,
+            smirk: expressions.smirk,
+            upper_lip_raise: expressions.upperLipRaise,
+          },
+          page: {
+            url: this.props.currentUrl,
+            title: this.props.currentTitle,
           },
         }
 
