@@ -16,7 +16,21 @@ export class TestType extends Controller {
     }
 
     public static async getOptions() {
-        return [{ label: "TestType - 1", id: 1 }, { label: "TestType - 2", id: 2 }];
+        const testType: Array<TestTypeInterface> = await Axios.get('/people').then((response) => {
+            return response.data;
+        });
+
+        let options: Array<{ label: string, id: number }> = [];
+
+        testType.map((testType) => {
+            options.push({
+                //@ts-ignore
+                id: testType.id,
+                label: `${testType.title} - ${testType.id}`
+            })
+        });
+
+        return options;
     }
 
     public static async getTestTypeById(id: number) {

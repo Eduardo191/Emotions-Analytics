@@ -13,8 +13,22 @@ export class People extends Controller {
     }
 
     public static async getOptions() {
-        delay(1000);
-        return [{ label: "People - 1", id: 1 }, { label: "People - 2", id: 2 }];
+
+        const peoples: Array<PeopleInterface> = await Axios.get('/people').then((response) => {
+            return response.data;
+        });
+
+        let options: Array<{ label: string, id: number }> = [];
+
+        peoples.map((people) => {
+            options.push({
+                //@ts-ignore
+                id: people.id,
+                label: `${people.name} - ${people.id}`
+            })
+        });
+
+        return options;
     }
 
     public static getForm() {
@@ -22,7 +36,6 @@ export class People extends Controller {
     }
 
     public static async editPeopleById(id: number, value: PeopleInterface) {
-        delay(500);
         const people: PeopleInterface = await Axios.patch(`/people/${id}`, value).then((response) => {
             return response.data;
         });
@@ -30,7 +43,6 @@ export class People extends Controller {
     }
 
     public static async getPeopleById(id: number) {
-        delay(500);
         const people: PeopleInterface = await Axios.get(`/people/${id}`).then((response) => {
             return response.data;
         });
@@ -38,7 +50,6 @@ export class People extends Controller {
     }
 
     public static async getPeoples() {
-        delay(500);
         const peoples: Array<PeopleInterface> = await Axios.get('/people').then((response) => {
             return response.data;
         });
