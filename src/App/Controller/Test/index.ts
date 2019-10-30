@@ -17,7 +17,6 @@ export class Test extends Controller {
     }
 
     public static async getTests() {
-        delay(500);
         const tests: Array<TestInterface> = await Axios.get('/tests').then((response) => {
             return response.data;
         });
@@ -25,34 +24,30 @@ export class Test extends Controller {
     }
 
     public static async editTestById(id: number) {
-        delay(500);
         const test: TestInterface = await Axios.patch(`/tests/${id}`).then((response) => {
             return response.data;
-        }); 
+        });
         return test;
     }
 
     public static async getTestById(id: number) {
-        delay(500);
         const test: TestInterface = await Axios.get(`/tests/${id}`).then((response) => {
             return response.data;
-        }); 
+        });
         return test;
     }
 
-    public static async getTestByPeopleId(peopleId: number) {
-        delay(500);
-        const test: TestInterface = await Axios.get(`/tests/${peopleId}`).then((response) => {
+    public static async getTestsByPeopleId(peopleId: number) {
+        const test: Array<TestInterface> = await Axios.get(`/tests/${peopleId}`).then((response) => {
             return response.data;
-        }); 
+        });
         return test;
     }
 
-    public static async getTestByTestTypeId(testTypeId: number) {
-        delay(500);
-        const test: TestInterface = await Axios.get(`/tests/${testTypeId}`).then((response) => {
+    public static async getTestsByTestTypeId(testTypeId: number) {
+        const test: Array<TestInterface> = await Axios.get(`/tests/${testTypeId}`).then((response) => {
             return response.data;
-        }); 
+        });
         return test;
     }
 }

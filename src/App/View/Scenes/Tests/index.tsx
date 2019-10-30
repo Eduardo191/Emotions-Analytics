@@ -29,7 +29,7 @@ export default class Tests extends React.Component<Props, State> {
       dataList.push({
         title: testType.title,
         subtitle: testType.objective,
-        link: `testes/${testType.id}`,
+        link: `tiposdeteste/${testType.id}`,
       })
     });
 

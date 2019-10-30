@@ -7,7 +7,7 @@ export const DataSidebarMenu = [
   {
     title: 'testes',
     iconName: 'chemical',
-    routePath: '/testes',
+    routePath: '/tiposdeteste',
   },
   {
     title: 'pessoas',
