@@ -1,7 +1,6 @@
 import React from 'react';
 //@ts-ignore
-import Chart from 'chart.js';
-import Axios from 'axios';
+import Chart from 'chart';
 
 export default class AverageGraph extends React.Component {
     async componentDidMount(){
@@ -41,6 +40,7 @@ export default class AverageGraph extends React.Component {
                 }
             }
         });
+        console.log(myChart);
     }
 
     render(){

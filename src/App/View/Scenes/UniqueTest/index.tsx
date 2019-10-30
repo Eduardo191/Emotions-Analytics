@@ -5,12 +5,16 @@ import { TestTypeInterface } from "../../../Controller/TestType/interface";
 import { PeopleInterface } from "../../../Controller/People/interface";
 import moment from "moment";
 import { Link } from "react-router-dom";
+//@ts-ignore
+import Chart from "chart";
+import AverageGraph from "../../Components/AverageGraph/index";
 
 interface OwnProps { }
 
 interface State {
   currentTestType: TestTypeInterface;
   currentPeople: PeopleInterface;
+  currentTestId: number;
 }
 
 type Props = RouteComponentProps<{}> & OwnProps;
@@ -29,23 +33,24 @@ class UniqueTest extends React.Component<Props, State> {
         name: "carregando...",
         email: "carregando...",
         birthday: "carregando...",
-      }
+      },
+      currentTestId: 0
     }
   }
 
 
   componentDidMount = async () => {
     const params: any = this.props.match.params;
-    const testId = parseInt(params.testId);
-    const test = await Test.getTestById(testId);
+    const currentTestId = parseInt(params.testId);
+    const test = await Test.getTestById(currentTestId);
     const currentPeople = await People.getPeopleById(test.people_id);
     const currentTestType = await TestType.getTestTypeById(test.test_type_id);
-    this.setState({ currentPeople, currentTestType });
+    this.setState({ currentPeople, currentTestType, currentTestId });
   }
 
   render() {
 
-    const { currentTestType, currentPeople } = this.state;
+    const { currentTestType, currentPeople, currentTestId } = this.state;
 
     return (
       <section>
@@ -71,6 +76,7 @@ class UniqueTest extends React.Component<Props, State> {
             </div>
           </div>
         </Link>
+        <AverageGraph />
       </section>
     )
   }
