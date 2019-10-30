@@ -1,8 +1,8 @@
 import { Controller } from "../Controller";
 import { TestInterface } from "./interface";
 import { formData } from "./formData";
-import { delay } from "../../Logic/Library";
 import Axios from "axios";
+import _ from "lodash";
 
 export class Test extends Controller {
 
@@ -45,9 +45,20 @@ export class Test extends Controller {
     }
 
     public static async getTestsByTestTypeId(testTypeId: number) {
-        const test: Array<TestInterface> = await Axios.get(`/tests/${testTypeId}`).then((response) => {
-            return response.data;
-        });
-        return test;
+
+        const tests: Array<TestInterface> = await Axios.get(`/tests`)
+            .then((response) => {
+                return response.data;
+            })
+            .catch(() => {
+                return null;
+            });
+
+        if (tests) {
+            const testsByTestTypeId = _.filter(tests, (o) => (o.test_type_id == testTypeId));
+            return testsByTestTypeId;
+        }
+
+        return null;
     }
 }
