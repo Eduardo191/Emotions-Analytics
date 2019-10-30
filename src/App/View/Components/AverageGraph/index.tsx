@@ -2,7 +2,7 @@ import React from 'react';
 //@ts-ignore
 import Chart from 'chart.js';
 
-export default class AverageGraph extends React.Component {
+export default class AverageGraph extends React.Component{
 
     componentDidMount = async () => {
 

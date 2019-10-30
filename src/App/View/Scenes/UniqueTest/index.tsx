@@ -7,6 +7,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 //@ts-ignore
 import AverageGraph from "../../Components/AverageGraph/index";
+import Axios from "axios";
 
 interface OwnProps { }
 
@@ -14,6 +15,7 @@ interface State {
   currentTestType: TestTypeInterface;
   currentPeople: PeopleInterface;
   currentTestId: number;
+  graphData: object;
 }
 
 type Props = RouteComponentProps<{}> & OwnProps;
@@ -33,7 +35,8 @@ class UniqueTest extends React.Component<Props, State> {
         email: "carregando...",
         birthday: "carregando...",
       },
-      currentTestId: 0
+      currentTestId: 0,
+      graphData: {},
     }
   }
 
@@ -44,12 +47,15 @@ class UniqueTest extends React.Component<Props, State> {
     const test = await Test.getTestById(currentTestId);
     const currentPeople = await People.getPeopleById(test.people_id);
     const currentTestType = await TestType.getTestTypeById(test.test_type_id);
-    this.setState({ currentPeople, currentTestType, currentTestId });
+    const graphData = await Axios.get('graph/emotions/20').then((response) => {
+      return response.data;
+    });
+    this.setState({ currentPeople, currentTestType, currentTestId, graphData });
   }
 
   render() {
-
-    const { currentTestType, currentPeople, currentTestId } = this.state;
+    
+    const { currentTestType, currentPeople, currentTestId, graphData } = this.state;
 
     return (
       <section>
