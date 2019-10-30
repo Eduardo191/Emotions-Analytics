@@ -24,6 +24,14 @@ export class Test extends Controller {
         return tests;
     }
 
+    public static async editTestById(id: number) {
+        delay(500);
+        const test: TestInterface = await Axios.patch(`/tests/${id}`).then((response) => {
+            return response.data;
+        }); 
+        return test;
+    }
+
     public static async getTestById(id: number) {
         delay(500);
         const test: TestInterface = await Axios.get(`/tests/${id}`).then((response) => {
