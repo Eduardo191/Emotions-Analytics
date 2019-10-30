@@ -25,6 +25,7 @@ export default class Tests extends React.Component<Props, State> {
     const testTypes: Array<TestTypeInterface> = await TestType.getTestTypes();
     let dataList: Array<itemOfListItensComponent> = [];
 
+    
     testTypes.map((testType) => {
       dataList.push({
         title: testType.title,

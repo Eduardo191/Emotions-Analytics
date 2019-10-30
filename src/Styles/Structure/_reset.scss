@@ -82,6 +82,10 @@ button:active{
   background: transparent;
 }
 
+canvas {
+  padding-top: 40px;
+}
+
 /*Scroll bar*/
 ::-webkit-scrollbar {
   width: 8px;

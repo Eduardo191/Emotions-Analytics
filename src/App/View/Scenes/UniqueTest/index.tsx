@@ -13,7 +13,6 @@ interface OwnProps { }
 interface State {
   currentTestType: TestTypeInterface;
   currentPeople: PeopleInterface;
-  currentTestId: number;
   graphData: object;
 }
 
@@ -34,7 +33,6 @@ class UniqueTest extends React.Component<Props, State> {
         email: "carregando...",
         birthday: "carregando...",
       },
-      currentTestId: 0,
       graphData: {},
     }
   }
@@ -49,12 +47,12 @@ class UniqueTest extends React.Component<Props, State> {
     const graphData = await Axios.get('graph/emotions/20').then((response) => {
       return response.data;
     });
-    this.setState({ currentPeople, currentTestType, currentTestId, graphData });
+    this.setState({ currentPeople, currentTestType, graphData });
   }
 
   render() {
-    
-    const { currentTestType, currentPeople, currentTestId, graphData } = this.state;
+
+    const { currentTestType, currentPeople, graphData } = this.state;
 
     return (
       <section>
@@ -80,7 +78,10 @@ class UniqueTest extends React.Component<Props, State> {
             </div>
           </div>
         </Link>
-        <AverageGraph />
+        {
+          //@ts-ignore
+          <AverageGraph emotions={graphData} />
+        }
       </section>
     )
   }
