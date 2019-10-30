@@ -44,7 +44,7 @@ export default class AverageGraph extends React.Component<Props>{
                     title: {
                         display: true,
                         fontSize: 20,
-                        text: 'Incidência com precisão acima de 80%'
+                        text: 'Porcentagem de tempo por emoção'
                     },
                     scales: {
                         yAxes: [{
