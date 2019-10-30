@@ -29,6 +29,11 @@ export default class Field4Type extends React.Component<Props & FieldInterface, 
 
 
   componentDidMount = async () => {
+    this.setOptions();
+  }
+
+
+  async setOptions() {
     const options = await this.props.getOptions();
     this.setState({ options });
   }
@@ -69,6 +74,7 @@ export default class Field4Type extends React.Component<Props & FieldInterface, 
         required={this.props.required}
         value={this.props.value}
         onChange={(event) => this.onChange(event)}
+        onClick={() => this.setOptions()}
       >
         <option value={""}>Nenhum item selecionado</option>
         {this.renderOptions()}

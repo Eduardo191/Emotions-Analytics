@@ -1,12 +1,11 @@
 import React from 'react';
-//@ts-ignore
 import Chart from 'chart.js';
 
 export default class AverageGraph extends React.Component{
 
     componentDidMount = async () => {
 
-        const ctx = document.getElementsByClassName('average_graph');
+        const ctx: any = document.getElementsByClassName('average_graph');
 
         let myChart = new Chart(ctx, {
             type: 'bar',
