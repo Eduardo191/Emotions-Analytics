@@ -1,13 +1,14 @@
 import React from 'react';
 //@ts-ignore
-import Chart from 'chart';
+import Chart from 'chart.js';
 
 export default class AverageGraph extends React.Component {
-    async componentDidMount(){
 
-        var ctx = document.getElementsByClassName('average_graph');
+    componentDidMount = async () => {
 
-        var myChart = new Chart(ctx, {
+        const ctx = document.getElementsByClassName('average_graph');
+
+        let myChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Raiva', 'Desprezo', 'Nojo', 'Medo', 'Felicidade', 'Tristeza'],
@@ -40,10 +41,9 @@ export default class AverageGraph extends React.Component {
                 }
             }
         });
-        console.log(myChart);
     }
 
-    render(){
+    render() {
         return (
             <canvas className="average_graph" />
         );
