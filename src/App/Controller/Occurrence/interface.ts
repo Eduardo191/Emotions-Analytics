@@ -1,11 +1,7 @@
 export interface OccurrenceInterface {
     id?: number;
-    time: string;
-    test_id: number;
-    emoji?: string;
-    page: {
-        url: string;
-        title: string;
+    test: {
+        id: number
     };
     people_appearance: {
         age: number;
@@ -45,4 +41,10 @@ export interface OccurrenceInterface {
         smirk: number;
         upper_lip_raise: number;
     };
+    // time: string;
+    // emoji?: string;
+    // page: {
+    //     url: string;
+    //     title: string;
+    // };
 }

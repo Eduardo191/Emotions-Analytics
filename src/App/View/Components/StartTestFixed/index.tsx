@@ -117,14 +117,14 @@ class StartTestFixed extends React.Component<Props, State>{
       if (faces && Array.isArray(faces) && faces.length !== 0) {
 
         let { expressions, emotions, appearance, emojis } = faces[0];
-        const Emoji = emojis.dominantEmoji;
         const TestId = testId;
-        const Time = timestamp;
+        // const Emoji = emojis.dominantEmoji;
+        // const Time = timestamp;
 
         const occurrenceValue: OccurrenceInterface = {
-          time: Time,
-          test_id: TestId,
-          emoji: Emoji,
+          test: {
+            id: TestId,
+          },
           people_appearance: {
             age: appearance.age,
             gender: appearance.gender,
@@ -163,10 +163,12 @@ class StartTestFixed extends React.Component<Props, State>{
             smirk: expressions.smirk,
             upper_lip_raise: expressions.upperLipRaise,
           },
-          page: {
-            url: this.props.currentUrl,
-            title: this.props.currentTitle,
-          },
+          // time: Time,
+          // emoji: Emoji,
+          // page: {
+          //   url: this.props.currentUrl,
+          //   title: this.props.currentTitle,
+          // },
         }
 
         let occurrence = new Occurrence(occurrenceValue);
