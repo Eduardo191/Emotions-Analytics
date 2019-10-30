@@ -24,7 +24,7 @@ class ListItens extends React.Component<Props, State>{
   renderList() {
     return (
       this.props.data.map((value) => (
-        <Link to={value.link}>
+        <Link key={value.link} to={value.link}>
           <li>
             <h3>{value.title.length < 17 ? value.title : `${value.title.substring(0, 17)}...`}</h3>
             <p>{value.subtitle.length < 17 ? value.subtitle : `${value.subtitle.substring(0, 17)}...`}</p>
