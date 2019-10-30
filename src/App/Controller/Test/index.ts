@@ -38,10 +38,21 @@ export class Test extends Controller {
     }
 
     public static async getTestsByPeopleId(peopleId: number) {
-        const test: Array<TestInterface> = await Axios.get(`/tests/${peopleId}`).then((response) => {
-            return response.data;
-        });
-        return test;
+        
+        const tests: Array<TestInterface> = await Axios.get(`/tests`)
+            .then((response) => {
+                return response.data;
+            })
+            .catch(() => {
+                return null;
+            });
+
+        if (tests) {
+            const testsByPeopleId = _.filter(tests, (o) => (o.people_id == peopleId));
+            return testsByPeopleId;
+        }
+
+        return null;
     }
 
     public static async getTestsByTestTypeId(testTypeId: number) {
