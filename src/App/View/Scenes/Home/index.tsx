@@ -36,7 +36,7 @@ export default class Home extends React.Component<Props, State> {
         dataList.push({
           title: testType.title,
           subtitle: people.name,
-          link: `teste/${test.id}`
+          link: `/teste/${test.id}`
         })
       })
     )

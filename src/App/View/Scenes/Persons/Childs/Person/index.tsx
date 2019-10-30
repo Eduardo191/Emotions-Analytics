@@ -1,29 +1,30 @@
 import React from "react";
 import ListItens from "../../../../Components/ListItens";
 import { itemOfListItensComponent } from "../../../../Components/ListItens";
-import { Test as TestController, TestType, People } from "../../../../../Controller";
+import { Test, TestType, People } from "../../../../../Controller";
 import { withRouter, RouteComponentProps } from "react-router";
-import { TestTypeInterface } from "../../../../../Controller/TestType/interface";
+import { PeopleInterface } from "../../../../../Controller/People/interface";
+import moment from "moment";
 
 interface OwnProps { }
 
 interface State {
   dataList: Array<itemOfListItensComponent>;
-  currentTestType: TestTypeInterface;
+  currentPeople: PeopleInterface;
 }
 
 type Props = RouteComponentProps<{}> & OwnProps;
 
-class Test extends React.Component<Props, State> {
+class Person extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
     this.state = {
       dataList: [],
-      currentTestType: {
-        title: "carregando...",
-        start_url: "carregando...",
-        objective: "carregando...",
+      currentPeople: {
+        name: "carregando...",
+        email: "carregando...",
+        birthday: "carregando...",
       },
     }
   }
@@ -31,15 +32,15 @@ class Test extends React.Component<Props, State> {
 
   componentDidMount = async () => {
     const params: any = this.props.match.params;
-    const testTypeId = parseInt(params.testTypeId);
-    this.setDataList(testTypeId);
-    this.setCurrentTestType(testTypeId);
+    const peopleId = parseInt(params.peopleId);
+    this.setDataList(peopleId);
+    this.setPeople(peopleId);
   }
 
 
-  async setDataList(testTypeId: number) {
+  async setDataList(peopleId: number) {
 
-    const tests = await TestController.getTestsByTestTypeId(testTypeId);
+    const tests = await Test.getTestsByPeopleId(peopleId);
     let dataList: Array<itemOfListItensComponent> = [];
 
     if (tests) {
@@ -63,31 +64,29 @@ class Test extends React.Component<Props, State> {
   }
 
 
-  async setCurrentTestType(testTypeId: number) {
-    const currentTestType = await TestType.getTestTypeById(testTypeId);
-    this.setState({ currentTestType });
+  async setPeople(peopleId: number) {
+    const currentPeople = await People.getPeopleById(peopleId);
+    this.setState({ currentPeople });
   }
 
 
   render() {
 
-    const { currentTestType, dataList } = this.state;
+    const { currentPeople, dataList } = this.state;
 
     return (
       <section>
         <div className="info">
-          <h1>TIPO DE TESTE</h1>
+          <h1>PARTICIPANTE DE TESTES</h1>
           <div className="wrapper">
-            <h3>Título <span>{currentTestType.title}</span></h3>
-            <a href={currentTestType.start_url} target="blank">
-              <h3>URL <span>{currentTestType.start_url}</span></h3>
-            </a>
+            <h3>Nome <span>{currentPeople.name}</span></h3>
+            <h3>Email <span>{currentPeople.email}</span></h3>
+            <h3>Data de Nascimento <span>{moment(currentPeople.birthday).format("DD/MM/YYYY")}</span></h3>
           </div>
-          <h3>Objetivo <span>{currentTestType.objective}</span></h3>
         </div>
         {dataList && Array.isArray(dataList) && dataList.length !== 0 ?
           <div>
-            <br/><br/>
+            <br/>
             <h2>Testes realizados</h2>
             <ListItens data={this.state.dataList} />
           </div>
@@ -97,4 +96,4 @@ class Test extends React.Component<Props, State> {
   }
 }
 
-export default withRouter(Test);
+export default withRouter(Person);
