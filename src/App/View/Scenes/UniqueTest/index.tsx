@@ -44,7 +44,7 @@ class UniqueTest extends React.Component<Props, State> {
     const test = await Test.getTestById(currentTestId);
     const currentPeople = await People.getPeopleById(test.people_id);
     const currentTestType = await TestType.getTestTypeById(test.test_type_id);
-    const graphData = await Axios.get('graph/emotions/20').then((response) => {
+    const graphData = await Axios.get(`graph/emotions/${currentTestId}`).then((response) => {
       return response.data;
     });
     this.setState({ currentPeople, currentTestType, graphData });

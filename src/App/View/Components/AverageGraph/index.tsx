@@ -14,14 +14,14 @@ interface Props {
 
 export default class AverageGraph extends React.Component<Props>{
 
-    componentDidMount = async () => {
+    componentDidUpdate = async () => {
 
         if (this.props.emotions) {
 
             const ctx: any = document.getElementsByClassName('average_graph');
 
             const { anger, contempt, disgusted, fear, joy, sadness } = this.props.emotions;
-
+                        
             let myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
