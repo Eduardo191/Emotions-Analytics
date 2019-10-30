@@ -44,7 +44,7 @@ export default class Home extends React.Component<Props, State> {
     this.setState({ dataList });
   }
 
-  render() {
+  render() {    
     return (
       <ListItens data={this.state.dataList} />
     )

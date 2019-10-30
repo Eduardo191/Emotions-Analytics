@@ -30,7 +30,7 @@ class ListItens extends React.Component<Props, State>{
               <h3>{value.title.length < 17 ? value.title : `${value.title.substring(0, 17)}...`}</h3>
               : null}
             {typeof value.subtitle === "string" ?
-              <p>{value.subtitle.length < 17 ? value.title : `${value.subtitle.substring(0, 17)}...`}</p>
+              <p>{value.subtitle.length < 17 ? value.subtitle : `${value.subtitle.substring(0, 17)}...`}</p>
               : null}
           </li>
         </Link>
