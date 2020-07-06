@@ -22,7 +22,7 @@ import { changeCurrentTitle, changeCurrentUrl } from "../Redux/Actions";
 
 //Axios
 import Axios from "axios";
-Axios.defaults.baseURL = 'http://backend-prod2.us-east-1.elasticbeanstalk.com';
+Axios.defaults.baseURL = 'http://emotions-analytics-api.us-east-1.elasticbeanstalk.com';
 Axios.defaults.headers.common['Content-Type'] = 'application/json';
 Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
