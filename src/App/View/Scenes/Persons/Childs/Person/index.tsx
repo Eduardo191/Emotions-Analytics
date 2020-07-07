@@ -2,7 +2,7 @@ import React from "react";
 import ListItens from "../../../../Components/ListItens";
 import { itemOfListItensComponent } from "../../../../Components/ListItens";
 import { Test, TestType, People } from "../../../../../Controller";
-import { withRouter, RouteComponentProps } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import { PeopleInterface } from "../../../../../Controller/People/interface";
 import moment from "moment";
 

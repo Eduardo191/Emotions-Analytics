@@ -1,7 +1,7 @@
 import React from "react";
 
 //Route
-import { withRouter, RouteComponentProps } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import Routes from "./Routes";
 
 //Data

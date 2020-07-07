@@ -2,7 +2,7 @@ import React from "react";
 import ListItens from "../../../../Components/ListItens";
 import { itemOfListItensComponent } from "../../../../Components/ListItens";
 import { Test as TestController, TestType, People } from "../../../../../Controller";
-import { withRouter, RouteComponentProps } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import { TestTypeInterface } from "../../../../../Controller/TestType/interface";
 
 interface OwnProps { }

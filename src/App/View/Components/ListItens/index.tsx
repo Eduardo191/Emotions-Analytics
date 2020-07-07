@@ -1,7 +1,7 @@
 import React from "react";
 
 //Router
-import { withRouter, RouteComponentProps } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export type itemOfListItensComponent = {

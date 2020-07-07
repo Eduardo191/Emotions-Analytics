@@ -1,6 +1,6 @@
 import React from "react";
 import { Test, TestType, People } from "../../../Controller";
-import { withRouter, RouteComponentProps } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 import { TestTypeInterface } from "../../../Controller/TestType/interface";
 import { PeopleInterface } from "../../../Controller/People/interface";
 import moment from "moment";
