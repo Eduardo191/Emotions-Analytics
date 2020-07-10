@@ -14,7 +14,7 @@ export class People extends Controller {
     public static async getOptions() {
 
         const peoples: Array<PeopleInterface> = await Axios.get('/people').then((response) => {
-            return response.data;
+            return response.data
         });
 
         let options: Array<{ label: string, id: number }> = [];

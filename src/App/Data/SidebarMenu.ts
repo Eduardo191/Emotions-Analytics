@@ -13,5 +13,10 @@ export const DataSidebarMenu = [
     title: 'pessoas',
     iconName: 'peoples',
     routePath: '/pessoas',
+  },
+  {
+    title: 'iniciar teste',
+    iconName: 'rocket',
+    routePath: '',
   }
 ]

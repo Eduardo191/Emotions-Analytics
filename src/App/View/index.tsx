@@ -51,8 +51,7 @@ class App extends React.Component<Props> {
 
         <div className={`${testGoingOn ? "invisible" : ""}`}>
           <SidebarNew data={DataSidebarNew} />
-          <SidebarMenu data={DataSidebarMenu} />
-          <StartTestFixed />
+          <SidebarMenu currentUrl={this.props.currentUrl} testGoingOn={this.props.testGoingOn} data={DataSidebarMenu} />
           <Routes />
         </div>
 
