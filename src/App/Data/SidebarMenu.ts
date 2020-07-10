@@ -5,12 +5,12 @@ export const DataSidebarMenu = [
     routePath: '/',
   },
   {
-    title: 'testes',
+    title: 'testes realizados',
     iconName: 'chemical',
     routePath: '/tiposdeteste',
   },
   {
-    title: 'pessoas',
+    title: 'pessoas cadastradas',
     iconName: 'peoples',
     routePath: '/pessoas',
   }

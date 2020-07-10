@@ -25,8 +25,8 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
   constructor(props: RouteComponentProps<{}> & Props) {
     super(props);
     this.state = {
-      compressedClass: "compressed",
-      compressed: true,
+      compressedClass: "uncompressed",
+      compressed: false,
       menuIcon: "sidebar",
     };
   }
@@ -120,16 +120,9 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
       <aside className={`${this.state.compressedClass} sidebar_menu`}>
         <nav>
           <ul>
+            <h1>Menu</h1>
             {this.renderList()}
           </ul>
-          <div
-            className="menu"
-            onClick={() => this.changeCompressed(!this.state.compressed)}
-          >
-            <div className="icon">
-              <Icon name={this.state.menuIcon} color="white" size="100%" />
-            </div>
-          </div>
         </nav>
       </aside>
     )
