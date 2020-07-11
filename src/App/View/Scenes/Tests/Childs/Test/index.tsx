@@ -78,17 +78,17 @@ class Test extends React.Component<Props, State> {
         <div className="info">
           <h1>TIPO DE TESTE</h1>
           <div className="wrapper">
-            <h3>Título <span>{currentTestType.title}</span></h3>
+            <h3>Título: <span>{currentTestType.title}</span></h3>
             <a href={currentTestType.start_url} target="blank">
-              <h3>URL <span>{currentTestType.start_url}</span></h3>
+              <h3>URL: <span>{currentTestType.start_url}</span></h3>
             </a>
           </div>
-          <h3>Objetivo <span>{currentTestType.objective}</span></h3>
+          <h3>Objetivo: <span>{currentTestType.objective}</span></h3>
         </div>
         {dataList && Array.isArray(dataList) && dataList.length !== 0 ?
           <div>
             <br/><br/>
-            <h2>Testes realizados</h2>
+            <h2 className="testes_realizados_titulo">Testes realizados</h2>
             <ListItens data={this.state.dataList} />
           </div>
         : null}

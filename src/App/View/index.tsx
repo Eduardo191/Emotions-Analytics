@@ -11,7 +11,6 @@ import { DataSidebarMenu } from "../Data/SidebarMenu";
 //Components
 import SidebarMenu from "./Components/SidebarMenu";
 import SidebarNew from "./Components/SidebarNew";
-import StartTestFixed from "./Components/StartTestFixed";
 import Iframe from "./Components/Iframe";
 import FinishTestButton from "./Components/FinishTestButton";
 

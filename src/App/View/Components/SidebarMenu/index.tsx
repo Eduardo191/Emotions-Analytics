@@ -12,12 +12,10 @@ import { TestInterface } from "../../../Controller/Test/interface";
 import { OccurrenceInterface } from "../../../Controller/Occurrence/interface";
 
 //Libraries
-import { Affectiva, capitalizeObjectKeys } from "../../../Logic/Library";
+import { Affectiva } from "../../../Logic/Library";
 import toastr from "toastr";
 
 //Redux
-import { connect } from "react-redux";
-import { ReducerState } from "../../../Redux/Interfaces";
 import { changeTestGoingOn, changeCurrentUrl } from "../../../Redux/Actions";
 import { TestTypeInterface } from "../../../Controller/TestType/interface";
 
@@ -47,7 +45,7 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
     this.state = {
       compressedClass: "uncompressed",
       compressed: false,
-      menuIcon: "sidebar",
+      menuIcon: "arrow",
       formMode: "close"
     };
   }
@@ -68,7 +66,7 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
   notLink(title: string) {
     console.log(title)
     console.log(this.props)
-    if (title == "iniciar teste") {
+    if (title === "iniciar teste") {
       this.openModal()
     }
   }
@@ -78,11 +76,12 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
 
     const currentPath = this.props.location.pathname;
     const isActived = (currentPath === routePath) ? "is_active" : "";
+    const path = (routePath === '') ? currentPath : routePath
 
     return (
       <li key={title} className={isActived}>
 
-        <Link to={routePath}
+        <Link to={path}
               onClick={() => this.notLink(title)}>
 
           <div className="icon">
@@ -217,7 +216,7 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
 
       if (faces && Array.isArray(faces) && faces.length !== 0) {
 
-        let { expressions, emotions, appearance, emojis } = faces[0];
+        let { expressions, emotions, appearance } = faces[0];
         const TestId = testId;
         // const Emoji = emojis.dominantEmoji;
         // const Time = timestamp;

@@ -40,7 +40,10 @@ export default class Tests extends React.Component<Props, State> {
 
   render() {
     return (
-      <ListItens data={this.state.dataList} />
+      <div>
+        <h2 className="info">Testes Cadastrados</h2>
+        <ListItens data={this.state.dataList} />
+      </div>
     )
   }
 }

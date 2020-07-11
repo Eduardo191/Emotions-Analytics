@@ -53,6 +53,13 @@ class UniqueTest extends React.Component<Props, State> {
     this.setState({ currentPeople, currentTestType, graphData });
   }
 
+  getMoment(currentPeople: any): string {
+    var result = moment(currentPeople.birthday).format("DD/MM/YYYY")
+    if (result === "Invalid date") {
+      return "carregando..."
+    } else return result
+  }
+
   render() {
 
     const { currentTestType, currentPeople, graphData } = this.state;
@@ -63,21 +70,21 @@ class UniqueTest extends React.Component<Props, State> {
           <div className="info">
             <h2>Tipo do teste</h2>
             <div className="wrapper">
-              <h3>Título <span>{currentTestType.title}</span></h3>
+              <h3>Título: <span>{currentTestType.title}</span></h3>
               <a href={currentTestType.start_url} target="blank">
-                <h3>URL <span>{currentTestType.start_url}</span></h3>
+                <h3>URL: <span>{currentTestType.start_url}</span></h3>
               </a>
             </div>
-            <h3>Objetivo <span>{currentTestType.objective}</span></h3>
+            <h3>Objetivo: <span>{currentTestType.objective}</span></h3>
           </div>
         </Link>
         <Link to={currentPeople.id ? `/pessoas/${currentPeople.id}` : "pessoas"}>
           <div className="info">
             <h2>Participante do teste</h2>
             <div className="wrapper">
-              <h3>Nome <span>{currentPeople.name}</span></h3>
-              <h3>Email <span>{currentPeople.email}</span></h3>
-              <h3>Data de Nascimento <span>{moment(currentPeople.birthday).format("DD/MM/YYYY")}</span></h3>
+              <h3>Nome: <span>{currentPeople.name}</span></h3>
+              <h3>Email: <span>{currentPeople.email}</span></h3>
+              <h3>Data de Nascimento: <span>{this.getMoment(currentPeople)}</span></h3>
             </div>
           </div>
         </Link>

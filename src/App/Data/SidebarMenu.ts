@@ -18,5 +18,10 @@ export const DataSidebarMenu = [
     title: 'iniciar teste',
     iconName: 'rocket',
     routePath: '',
+  },
+  {
+    title: 'manual',
+    iconName: 'question1',
+    routePath: '/help',
   }
 ]
