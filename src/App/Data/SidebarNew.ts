@@ -14,7 +14,7 @@ export const DataSidebarNew = [
     },
   },
   {
-    title: "Novo teste",
+    title: "Novo tipo de teste",
     iconName: "chemical",
     form: TestType.getForm(),
     asyncPost: async (value: TestTypeInterface) => {
