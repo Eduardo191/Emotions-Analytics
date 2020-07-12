@@ -46,7 +46,10 @@ export default class Home extends React.Component<Props, State> {
 
   render() {    
     return (
-      <ListItens data={this.state.dataList} />
+      <div>
+        <h2 className="info">Testes Realizados</h2>
+        <ListItens data={this.state.dataList} />
+      </div>
     )
   }
 }

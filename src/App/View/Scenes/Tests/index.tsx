@@ -26,6 +26,7 @@ export default class Tests extends React.Component<Props, State> {
     let dataList: Array<itemOfListItensComponent> = [];
 
     
+    // eslint-disable-next-line array-callback-return
     testTypes.map((testType) => {
       dataList.push({
         title: testType.title,
@@ -40,7 +41,10 @@ export default class Tests extends React.Component<Props, State> {
 
   render() {
     return (
-      <ListItens data={this.state.dataList} />
+      <div>
+        <h2 className="info">Testes Cadastrados</h2>
+        <ListItens data={this.state.dataList} />
+      </div>
     )
   }
 }

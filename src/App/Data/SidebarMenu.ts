@@ -5,7 +5,7 @@ export const DataSidebarMenu = [
     routePath: '/',
   },
   {
-    title: 'testes realizados',
+    title: 'testes cadastrados',
     iconName: 'chemical',
     routePath: '/tiposdeteste',
   },
@@ -13,5 +13,15 @@ export const DataSidebarMenu = [
     title: 'pessoas cadastradas',
     iconName: 'peoples',
     routePath: '/pessoas',
+  },
+  {
+    title: 'iniciar teste',
+    iconName: 'rocket',
+    routePath: '',
+  },
+  {
+    title: 'manual',
+    iconName: 'question1',
+    routePath: '/help',
   }
 ]
