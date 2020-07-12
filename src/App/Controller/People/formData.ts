@@ -18,8 +18,8 @@ export const formData: Array<FieldInterface> = [
     {
         typeId: 5, //Data
         key: "birthday",
-        name: "Aniversário",
-        placeholder: "Data de aniversário do participante",
+        name: "Data de nascimento",
+        placeholder: "Data de nascimento do participante",
         required: true,
     },
 ]

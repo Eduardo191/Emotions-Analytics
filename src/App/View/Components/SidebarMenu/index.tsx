@@ -298,6 +298,7 @@ class SidebarMenu extends React.Component<RouteComponentProps<{}> & Props, State
         <aside className={`${this.state.compressedClass} sidebar_menu`}>
         <div>
           <ul>
+            <h1>Menu</h1>
             {this.renderList()}
           </ul>
           <div
