@@ -23,6 +23,7 @@ export default class Iframe extends React.Component<Props> {
 
   render() {
     return (
+      // eslint-disable-next-line jsx-a11y/iframe-has-title
       <iframe id="iframe-test" is="x-frame-bypass" onLoad={() => this.onChangeIframe()} src={this.props.startUrl} />
     )
   }

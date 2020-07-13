@@ -48,7 +48,7 @@ export class Test extends Controller {
             });
 
         if (tests) {
-            const testsByPeopleId = _.filter(tests, (o) => (o.people_id == peopleId));
+            const testsByPeopleId = _.filter(tests, (o) => (o.people_id === peopleId));
             return testsByPeopleId;
         }
 
@@ -66,7 +66,7 @@ export class Test extends Controller {
             });
 
         if (tests) {
-            const testsByTestTypeId = _.filter(tests, (o) => (o.test_type_id == testTypeId));
+            const testsByTestTypeId = _.filter(tests, (o) => (o.test_type_id === testTypeId));
             return testsByTestTypeId;
         }
 

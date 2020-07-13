@@ -22,6 +22,7 @@ export default class AverageGraph extends React.Component<Props>{
 
             const { anger, contempt, disgusted, fear, joy, sadness } = this.props.emotions;
                         
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             let myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {

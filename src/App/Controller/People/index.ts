@@ -19,6 +19,7 @@ export class People extends Controller {
 
         let options: Array<{ label: string, id: number }> = [];
 
+        // eslint-disable-next-line array-callback-return
         peoples.map((people) => {
             options.push({
                 //@ts-ignore

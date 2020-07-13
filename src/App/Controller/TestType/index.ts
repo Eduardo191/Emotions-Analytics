@@ -23,6 +23,7 @@ export class TestType extends Controller {
 
         let options: Array<{ label: string, id: number }> = [];
 
+        // eslint-disable-next-line array-callback-return
         testType.map((testType) => {
             options.push({
                 //@ts-ignore
