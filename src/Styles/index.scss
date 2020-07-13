@@ -6,14 +6,13 @@
 @import 'Structure/commons';
 
 /*Components*/
+@import '../App/View/Components/StartTestFixed/styles';
 @import '../App/View/Components/SidebarMenu/styles';
 @import '../App/View/Components/SidebarNew/styles';
 @import '../App/View/Components/Iframe/style';
 @import '../App/View/Components/FinishTestButton/styles';
 @import '../App/View/Components/ListItens/styles';
 @import '../App/View/Components/Form/styles';
-@import '../App/View/Components/AverageGraph/styles';
-@import '../App/View/Components/HelpList/styles';
   //form types
   @import '../App/View/Components/Form/Components/FormTypes/ModalForm/styles';
 

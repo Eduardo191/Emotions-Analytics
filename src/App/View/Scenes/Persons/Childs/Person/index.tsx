@@ -79,15 +79,15 @@ class Person extends React.Component<Props, State> {
         <div className="info">
           <h1>PARTICIPANTE DE TESTES</h1>
           <div className="wrapper">
-            <h3>Nome: <span>{currentPeople.name}</span></h3>
-            <h3>Email: <span>{currentPeople.email}</span></h3>
-            <h3>Data de Nascimento: <span>{moment(currentPeople.birthday).format("DD/MM/YYYY")}</span></h3>
+            <h3>Nome <span>{currentPeople.name}</span></h3>
+            <h3>Email <span>{currentPeople.email}</span></h3>
+            <h3>Data de Nascimento <span>{moment(currentPeople.birthday).format("DD/MM/YYYY")}</span></h3>
           </div>
         </div>
         {dataList && Array.isArray(dataList) && dataList.length !== 0 ?
           <div>
             <br/>
-            <h2 className="testes_realizados_titulo">Testes realizados</h2>
+            <h2>Testes realizados</h2>
             <ListItens data={this.state.dataList} />
           </div>
         : null}
