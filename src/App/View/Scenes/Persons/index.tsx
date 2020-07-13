@@ -27,7 +27,6 @@ export default class Persons extends React.Component<Props, State> {
     const peoples = await People.getPeoples();
     let dataList: Array<itemOfListItensComponent> = [];
 
-    // eslint-disable-next-line array-callback-return
     peoples.map((people) => {
       dataList.push({
         title: people.name,
@@ -41,10 +40,7 @@ export default class Persons extends React.Component<Props, State> {
 
   render() {
     return (
-      <div>
-        <h2 className="info">Pessoas Cadastradas</h2>
-        <ListItens data={this.state.dataList} />
-      </div>
+      <ListItens data={this.state.dataList} />
     )
   }
 }
