@@ -1,45 +1,46 @@
-.help_title{
-
+.help_title {
     padding-top: 30px;
-      
-    .wrapper{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-  
-    h1, h2{ text-align: center }
-  
-    h3{
-      text-align: center;
-      margin: 5px;
+    h1,
+    h2 {
+        text-align: center
+    }
+    h3 {
+        text-align: justify;
+        margin: 5px;
     }
 }
-  
+
 h2.help_info {
     text-align: center;
 }
-  
+
 h3.help_info {
     padding-left: 80px;
     padding-right: 80px;
 }
-  
-.help_title_final{
+
+.help_title_final {
     padding-top: 30px;
-    padding-bottom: 90px;  
-    .wrapper{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    padding-bottom: 90px;
+    .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-  
-    h1, h2{ text-align: center }
-  
-    h3{
-      text-align: center;
-      margin: 5px;
-  
-      span{ font-weight: 400 }
+    h1,
+    h2 {
+        text-align: center
+    }
+    h3 {
+        text-align: center;
+        margin: 5px;
+        span {
+            font-weight: 400
+        }
     }
 }
