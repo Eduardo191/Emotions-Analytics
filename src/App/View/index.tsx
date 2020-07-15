@@ -6,12 +6,12 @@ import Routes from "./Routes";
 
 //Data
 import { DataSidebarNew } from "../Data/SidebarNew";
-import { DataSidebarMenu } from "../Data/SidebarMenu";
 
 //Components
 import SidebarMenu from "./Components/SidebarMenu";
 import SidebarNew from "./Components/SidebarNew";
 import Iframe from "./Components/Iframe";
+import StartTestFixed from "./Components/StartTestFixed";
 import FinishTestButton from "./Components/FinishTestButton";
 
 //Redux
@@ -50,7 +50,8 @@ class App extends React.Component<Props> {
 
         <div className={`${testGoingOn ? "invisible" : ""}`}>
           <SidebarNew data={DataSidebarNew} />
-          <SidebarMenu currentUrl={this.props.currentUrl} testGoingOn={this.props.testGoingOn} data={DataSidebarMenu} />
+          <SidebarMenu />
+          {/* <StartTestFixed /> */}
           <Routes />
         </div>
 

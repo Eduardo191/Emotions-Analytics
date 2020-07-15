@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Icon from "../Icon";
-import { delay } from "../../../Logic/Library/delay";
 
+//Components
+import Icon from "../Icon";
 import { ModalForm } from "../Form/Components/FormTypes/ModalForm";
 
 //Controllers
@@ -10,18 +9,17 @@ import { Test, Occurrence, TestType } from "../../../Controller";
 import { TestInterface } from "../../../Controller/Test/interface";
 import { OccurrenceInterface } from "../../../Controller/Occurrence/interface";
 
-import { DataSidebarMenu } from "../../../Data/SidebarMenu";
 //Libraries
 import { Affectiva } from "../../../Logic/Library";
 import toastr from "toastr";
 
 //Redux
-import { changeTestGoingOn, changeCurrentUrl } from "../../../Redux/Actions";
-import { TestTypeInterface } from "../../../Controller/TestType/interface";
 import { connect } from "react-redux";
 import { ReducerState } from "../../../Redux/Interfaces";
+import { changeTestGoingOn, changeCurrentUrl } from "../../../Redux/Actions";
+import { TestTypeInterface } from "../../../Controller/TestType/interface";
 
-interface Props {
+interface ReduxState {
   testGoingOn: boolean;
   currentUrl: string;
   currentTitle: string;
@@ -29,117 +27,21 @@ interface Props {
   changeCurrentUrl: Function;
 }
 
+type Props = ReduxState;
+
 interface State {
-  compressedClass: string;
-  compressed: boolean;
-  menuIcon: string;
   formMode: "open" | "close" | "loading";
 }
 
-class SidebarMenu extends React.Component<Props, State>{
+class StartTestFixed extends React.Component<Props, State>{
 
   constructor(props: Props) {
     super(props);
     this.state = {
-      compressedClass: "uncompressed",
-      compressed: false,
-      menuIcon: "arrow",
-      formMode: "close"
+      formMode: "close",
     };
   }
 
-  current_batata = "/"
-
-
-  renderList() {
-
-    const data = DataSidebarMenu;
-
-    return (
-      data.map((option) => {
-        const { title, iconName, routePath } = option;
-        return this.renderItem(title, iconName, routePath);
-      })
-    )
-  }
-
-  notLink(title: string, routePath: string) {
-    this.current_batata = routePath
-    if (title === "iniciar teste") {
-      this.openModal()
-    }
-  }
-
-
-  renderItem(title: string, iconName: string, routePath: string) {
-
-    const isActived = (this.current_batata === routePath) ? "is_active" : "";
-    const path = (routePath === '') ? this.current_batata : routePath
-
-    return (
-      <li key={title} className={isActived}>
-
-        <Link to={path}
-              onClick={() => this.notLink(title, routePath)}>
-
-          <div className="icon">
-            <Icon name={iconName} size="100%" color="white" />
-          </div>
-
-          <h3>{title}</h3>
-
-        </Link>
-
-      </li>
-    )
-  }
-
-
-  changeCompressed(compressed: boolean) {
-
-    if (compressed) {
-      this.compress();
-    } else {
-      this.uncompress();
-    }
-  }
-
-
-  async compress() {
-
-    this.setState({ compressedClass: "uncompressed outside" });
-    await delay(300);
-
-    this.setState({
-      compressedClass: "compressed invisible",
-      menuIcon: "sidebar",
-    });
-
-    await delay(100);
-
-    this.setState({
-      compressedClass: "compressed",
-      compressed: true,
-    })
-  }
-
-  async uncompress() {
-
-    this.setState({ compressedClass: "compressed invisible" });
-    await delay(300);
-
-    this.setState({
-      compressedClass: "uncompressed outside",
-      menuIcon: "arrow",
-    });
-
-    await delay(100);
-
-    this.setState({
-      compressedClass: "uncompressed",
-      compressed: false,
-    })
-  }
 
   async onSubmit(values: TestInterface) {
 
@@ -214,7 +116,7 @@ class SidebarMenu extends React.Component<Props, State>{
 
       if (faces && Array.isArray(faces) && faces.length !== 0) {
 
-        let { expressions, emotions, appearance } = faces[0];
+        let { expressions, emotions, appearance, emojis } = faces[0];
         const TestId = testId;
         // const Emoji = emojis.dominantEmoji;
         // const Time = timestamp;
@@ -291,29 +193,23 @@ class SidebarMenu extends React.Component<Props, State>{
 
 
   render() {
+
+    const form = Test.getForm();
+
     return (
-      <div>
-        <aside className={`${this.state.compressedClass} sidebar_menu`}>
-        <div>
-          <ul>
-            {this.renderList()}
-          </ul>
-          <div
-            className="menu"
-            onClick={() => this.changeCompressed(!this.state.compressed)}
-          >
-            <div className="icon">
-              <Icon name={this.state.menuIcon} color="white" size="100%" />
-            </div>
+      <div className={"start_test"}>
+        <div className="wrapper_button" onClick={() => this.openModal()}>
+          <div className="icon">
+            <Icon name="rocket" size="100%" color="#fff" />
           </div>
+          <span>Iniciar Teste</span>
         </div>
-      </aside>
-      <ModalForm
-            mode={this.state.formMode}
-            onSubmit={(values: TestInterface) => this.onSubmit(values)}
-            onCancel={() => this.onCancel()}
-            form={Test.getForm()}
-            submitLabel="Iniciar"
+        <ModalForm
+          mode={this.state.formMode}
+          onSubmit={(values: TestInterface) => this.onSubmit(values)}
+          onCancel={() => this.onCancel()}
+          form={form}
+          submitLabel="Iniciar"
         />
       </div>
     )
@@ -343,6 +239,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SidebarMenu);
-
-// export default withRouter(SidebarMenu);
+)(StartTestFixed);
